@@ -34,7 +34,7 @@
             <div class="row">
                <div class="col-xs-12">
                   <h2 class="page-header">
-                     <i class="fa fa-globe"></i> AdminLTE, Inc.
+                     <i class="fa fa-globe"></i> Trop BRC.
                      <small class="pull-right">Date: 2/10/2014</small>
                   </h2>
                </div>
@@ -45,22 +45,23 @@
                <div class="col-sm-4 invoice-col">
                   From
                   <address>
-                     <strong>Admin, Inc.</strong><br>
+                  <strong>John Doe</strong><br>
                      795 Folsom Ave, Suite 600<br>
                      San Francisco, CA 94107<br>
-                     Phone: (804) 123-5432<br>
-                     Email: info@almasaeedstudio.com
+                     Phone: (555) 539-1037<br>
+                     Email: john.doe@example.com
                   </address>
                </div>
                <!-- /.col -->
                <div class="col-sm-4 invoice-col">
                   To
                   <address>
-                     <strong>John Doe</strong><br>
-                     795 Folsom Ave, Suite 600<br>
-                     San Francisco, CA 94107<br>
-                     Phone: (555) 539-1037<br>
-                     Email: john.doe@example.com
+                  <strong>Trop BRC.</strong><br>
+                     Kampus IPB Taman Kencana<br>
+                     Jl. Taman Kencana No. 3, Bogor 16128<br>
+                     Phone: +62 251 8373561<br>
+                     Email: tropbrc@apps.ipb.ac.id<br>
+                     Website: biofarmaka.ipb.ac.id  
                   </address>
                </div>
                <!-- /.col -->
@@ -233,14 +234,31 @@
       <!-- /.box-header -->
       <div class="box-body">
          <section class="invoice">
-            <div class="box-header">
-               <h3 class="box-title">Shipment Status</h3>
-            </div>
+            <div class="row">
+               <div class="col-xs-12 table-responsive">
+                  <table class="table table-striped">
+                     <thead>
+                        <tr>
+                           <th>History</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td>27-05-2018</td>
+                           <td>MANIFESTED [BANDUNG]</td>
+                        </tr>
+                        <tr>
+                           <td>27-06-2018</td>
+                           <td>WITH DELIVERY COURIER [BOGOR]</td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+               <!-- /.col -->
+            </div>   
             <!-- /.box-header -->
-            <div class="box-body no-padding">
-
          <!-- /.box-body -->
-         </div>
+         </section>
          <!-- /.box -->
       </div>
       <!-- /.box-body -->
@@ -248,11 +266,12 @@
    <!-- /.box -->
 </div>
 <!-- /.col -->
+
 <div class="col-md-12">
    <div class="box box-default collapsed-box">
       <a href="#">
          <div class="button box-header with-border " data-widget="collapse">
-            <h3 class="box-title">Validasi Pengiriman</h3>
+            <h3 class="box-title">Hasil Analisis</h3>
             <div class="box-tools pull-right">
                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
                </button>
@@ -263,73 +282,50 @@
       <!-- /.box-header -->
       <div class="box-body">
          <section class="invoice">
-            <div class="box-header">
-               <h3 class="box-title">Shipment Status</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body no-padding">
-               <table class="table table-condensed">
-                  <tr>
-                     <th style="width: 10px">#</th>
-                     <th>Task</th>
-                     <th>Progress</th>
-                     <th style="width: 40px">Label</th>
-                  </tr>
-                  <tr>
-                     <td>1.</td>
-                     <td>Update software</td>
-                     <td>
-                        <div class="progress progress-xs">
-                           <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                        </div>
-                     </td>
-                     <td><span class="badge bg-red">55%</span></td>
-                  </tr>
-                  <tr>
-                     <td>2.</td>
-                     <td>Clean database</td>
-                     <td>
-                        <div class="progress progress-xs">
-                           <div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
-                        </div>
-                     </td>
-                     <td><span class="badge bg-yellow">70%</span></td>
-                  </tr>
-                  <tr>
-                     <td>3.</td>
-                     <td>Cron job running</td>
-                     <td>
-                        <div class="progress progress-xs progress-striped active">
-                           <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
-                        </div>
-                     </td>
-                     <td><span class="badge bg-light-blue">30%</span></td>
-                  </tr>
-                  <tr>
-                     <td>4.</td>
-                     <td>Fix and squish bugs</td>
-                     <td>
-                        <div class="progress progress-xs progress-striped active">
-                           <div class="progress-bar progress-bar-success" style="width: 90%"></div>
-                        </div>
-                     </td>
-                     <td><span class="badge bg-green">90%</span></td>
-                  </tr>
-               </table>
+            <div align="center">
+               <img src="http://3.bp.blogspot.com/-1AZWrPsTT6g/T8Csrlgzq4I/AAAAAAAAAMs/nLCjyKf6ypw/s1600/kandungan+ternak.png">
                <br>
-               <div class="row no-print">
-                  <div class="col-xs-12">
-                     <button type="button" class="btn btn-success pull-right">
-                     Telah Diterima
-                     </button>
-                     <button type="button" class="btn btn-danger pull-right" style="margin-right: 5px;">
-                     Gagal Diterima
-                     </button>
+            </div>
+            <br>
+            <br>
+            <div class="col">
+            <!-- Horizontal Form -->
+            <div class="box box-default">
+               <div class="box-header with-border">
+               <h3 class="box-title">Sisa Sample </h3>
+               <br>
+               <small>Jika tidak bersisa tidak perlu di isi</small>
+               </div>
+               <!-- /.box-header -->
+               <!-- form start -->
+               <form class="form-horizontal">
+               <div class="box-body">
+                  <div class="form-group">
+                     <label for="inputEmail3" class="col-sm-3 control-label">Jasa Pengirim</label>
+
+                     <div class="col-sm-5">
+                     <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label for="inputEmail4" class="col-sm-3 control-label">No Resi</label>
+
+                     <div class="col-sm-5">
+                     <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                     </div>
                   </div>
                </div>
+               <!-- /.box-body -->
+               <div class="box-footer">   
+                  <button type="submit" class="btn btn-info pull-right">Sign in</button>
+               </div>
+               <!-- /.box-footer -->
+               </form>
+            </div>
+          <!-- /.box -->
          </section>
          <!-- /.box-body -->
-         </div>
+      </div>
          <!-- /.box -->
       </div>
       <!-- /.box-body -->
@@ -337,4 +333,5 @@
    <!-- /.box -->
 </div>
 <!-- /.col -->
+
 @endsection

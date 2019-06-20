@@ -49,3 +49,15 @@ Route::get('/details', function () {
 Route::get('/print-invoice', function () {
     return view('print-invoice');
 });
+
+Route::get('/tambah-katalog', function () {
+    return view('tambah-katalog');
+});
+
+Route::get('/kelola-katalog', function () {
+    return view('kelola-katalog');
+});
+
+Route::get('/katalog', function () {
+    return view('katalog');
+});

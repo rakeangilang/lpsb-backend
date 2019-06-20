@@ -17,12 +17,7 @@
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu" data-widget="tree">
             <li class="header">MAIN NAVIGATION</li>
-            <li class="active treeview menu-open">
-              <a href="/">
-                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-              </a>
-            </li>
-            <li class="treeview menu-open">
+            <li class="treeview menu-close">
               <a href="#">
                 <i class="fa fa-user"></i> <span>Pengguna</span>
                 <span class="pull-right-container">
@@ -35,7 +30,7 @@
                 <li><a href="index2.html"><i class="fa fa-circle-o"></i> Kelola Pelanggan</a></li>
               </ul>
             </li>
-            <li class="treeview menu-open">
+            <li class="treeview menu-close">
               <a href="#">
                 <i class="fa fa-flask"></i> <span>Katalog</span>
                 <span class="pull-right-container">
@@ -43,9 +38,8 @@
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="{{ route('katalog-tambah')}}"><i class="fa fa-circle-o"></i> Tambah Katalog</a></li>
-                <li><a href="index2.html"><i class="fa fa-circle-o"></i> Kelola Katalog</a></li>
-                <li><a href="index2.html"><i class="fa fa-circle-o"></i> Kategori</a></li>
+                <li><a href="tambah-katalog"><i class="fa fa-circle-o"></i> Tambah Katalog</a></li>
+                <li><a href="kelola-katalog"><i class="fa fa-circle-o"></i> Kelola Katalog</a></li>
               </ul>
             </li>
             <li class="menu-open">
