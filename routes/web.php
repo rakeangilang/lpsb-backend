@@ -42,3 +42,10 @@ Route::get('/total-order', function () {
     return view('total-order');
 });
 
+Route::get('/details', function () {
+    return view('details');
+});
+
+Route::get('/print-invoice', function () {
+    return view('print-invoice');
+});
