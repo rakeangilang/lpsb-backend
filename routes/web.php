@@ -25,3 +25,4 @@ Route::get('/katalog/tambah', 'HomeController@tambahKatalog')->name('katalog-tam
 
 // PESANAN
 Route::get('/pesanan', 'HomeController@listPesanan')->name('pesanan-list');
+Route::get('/incoming-order', 'HomeController@incoming')->name('incoming-order');

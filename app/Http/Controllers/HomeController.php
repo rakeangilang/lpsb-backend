@@ -34,4 +34,8 @@ class HomeController extends Controller
     public function listPesanan(){
         return view('pesanan');
     }
+    public function incoming()
+    {
+        return view('incoming-order');
+    }
 }
