@@ -58,6 +58,6 @@ Route::get('/kelola-katalog', function () {
     return view('kelola-katalog');
 });
 
-Route::get('/katalog', function () {
-    return view('katalog');
+Route::get('/update-katalog', function () {
+    return view('update-katalog');
 });
