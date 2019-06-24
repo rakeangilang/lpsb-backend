@@ -5,13 +5,13 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Katalog
-        <small>Klik Katalog untuk Mengelola</small>
+        Admin
+        <small>Klik Admin untuk Mengelola</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Beranda</a></li>
-        <li class="active">Katalog</li>
-        <li class="active">Kelola Katalog</li>
+        <li class="active">Pengguna</li>
+        <li class="active">Kelola Admin</li>
       </ol>
     </section>
 
@@ -23,21 +23,17 @@
             <thead>
             <tr>
                 <th>No</th>
-                <th>Kategori</th>
-                <th>Jenis Analisis</th>
-                <th>Harga</th>
-                <th>Metode</th>
-                <th>Keterangan</th>
+                <th>Peran Admin</th>
+                <th>Nama Lengkap</th>
+                <th>Alamat Email</th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 <td>1</td>
-                <td>Kategori 1</td>
-                <td>Jenis 1</td>
-                <td>1000</td>
-                <td>Prototype</td>
-                <td>Mantab gan</td>
+                <td>Super Admin</td>
+                <td>Fikri Al Wahid</td>
+                <td>fikroyafter21@example.com</td>
             </tr>
             </tbody>
             </table>

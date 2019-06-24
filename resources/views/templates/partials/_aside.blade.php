@@ -25,9 +25,9 @@
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="index.html"><i class="fa fa-circle-o"></i> Tambah Admin</a></li>
-                <li><a href="index2.html"><i class="fa fa-circle-o"></i> Kelola Admin</a></li>
-                <li><a href="index2.html"><i class="fa fa-circle-o"></i> Kelola Pelanggan</a></li>
+                <li><a href="tambah-admin"><i class="fa fa-circle-o"></i> Tambah Admin</a></li>
+                <li><a href="kelola-admin"><i class="fa fa-circle-o"></i> Kelola Admin</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i> Kelola Pelanggan</a></li>
               </ul>
             </li>
             <li class="treeview menu-close">

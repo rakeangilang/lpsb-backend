@@ -61,3 +61,15 @@ Route::get('/kelola-katalog', function () {
 Route::get('/update-katalog', function () {
     return view('update-katalog');
 });
+
+Route::get('/tambah-admin', function () {
+    return view('tambah-admin');
+});
+
+Route::get('/kelola-admin', function () {
+    return view('kelola-admin');
+});
+
+Route::get('/update-admin', function () {
+    return view('update-admin');
+});
