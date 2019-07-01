@@ -38,13 +38,17 @@ class AdminController extends Controller
         $this->validate($request, [
           'name'          => 'required',
           'email'         => 'required',
+          'jabatan'       => 'required',
+          'ttd'           => 'required',
           'password'      => 'required'
         ]);
         // store in the database
         $admins = new Admin;
-        $admins->name = $request->name;
-        $admins->email = $request->email;
-        $admins->password=bcrypt($request->password);
+        $admins->name       = $request->name;
+        $admins->email      = $request->email;
+        $admins->jabatan    = $request->jabatan;
+        $admins->ttd        = $request->ttd;
+        $admins->password   = bcrypt($request->password);
         $admins->save();
         return redirect()->route('admin.auth.login');
     }
