@@ -37,7 +37,7 @@ class AdminController extends Controller
         // validate the data
         $this->validate($request, [
           'name'          => 'required',
-          'email'         => 'required',
+          'email'         => ['required','unique:admins'],
           'jabatan'       => 'required',
           'ttd'           => 'required',
           'password'      => 'required'
