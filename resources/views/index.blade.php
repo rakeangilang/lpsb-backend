@@ -23,7 +23,7 @@
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
-              <h3>150</h3>
+              <h3>{{$incoming_order}}</h3>
               <p>Incoming Order</p>
             </div>
             <div class="icon">
@@ -39,7 +39,7 @@
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3>53</h3>
+              <h3>{{$ongoing_order}}</h3>
               <p>On-going Order</p>
             </div>
             <div class="icon">
@@ -55,7 +55,7 @@
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>44</h3>
+              <h3>{{$complete_order}}</h3>
               <p>Order Complete</p>
             </div>
             <div class="icon">
@@ -70,7 +70,7 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>150</h3>
+              <h3>{{$total_order}}</h3>
               <p>Total Order</p>
             </div>
             <div class="icon">
