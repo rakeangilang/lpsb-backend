@@ -13,7 +13,7 @@
 
 
 Route::get('/', 'HomeController@index')->name('root');
-
+Route::get('kelola-admin', 'AdminController@showall')->name('kelola-admin');
 Auth::routes();
 
 
@@ -64,9 +64,9 @@ Route::get('/tambah-admin', function () {
     return view('tambah-admin');
 });
 
-Route::get('/kelola-admin', function () {
-    return view('kelola-admin');
-});
+// Route::get('/kelola-admin', function () {
+//     return view('kelola-admin');
+// });
 
 Route::get('/update-admin', function () {
     return view('update-admin');

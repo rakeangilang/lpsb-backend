@@ -22,19 +22,22 @@
             <table id="example1" class="table table-bordered table-striped">
             <thead>
             <tr>
-                <th>No</th>
-                <th>Peran Admin</th>
+                <th style='width: 10px;'>No</th>
                 <th>Nama Lengkap</th>
+                <th>Jabatan</th>
                 <th>Alamat Email</th>
             </tr>
             </thead>
             <tbody>
+            <?php $i=0 ?>
+            @foreach($admins as $admin)
             <tr>
-                <td>1</td>
-                <td>Super Admin</td>
-                <td>Fikri Al Wahid</td>
-                <td>fikroyafter21@example.com</td>
+                <td>{{$i=$i+1}}</td>
+                <td>{{$admin->name}}</td>
+                <td>{{$admin->jabatan}}</td>
+                <td>{{$admin->email}}</td>
             </tr>
+            @endforeach
             </tbody>
             </table>
         </div>

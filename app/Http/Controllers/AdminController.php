@@ -2,6 +2,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Admin;
+use Illuminate\Support\Facades\DB; 
+
 class AdminController extends Controller
 {
     public function __construct()
@@ -17,6 +19,14 @@ class AdminController extends Controller
     {
         return view('admin.dashboard');
     }
+    
+    public function showall()
+    {
+        $admins = DB::table('admins')->get();
+        return view('kelola-admin',compact('admins'));
+
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -50,7 +60,7 @@ class AdminController extends Controller
         $admins->ttd        = $request->ttd;
         $admins->password   = bcrypt($request->password);
         $admins->save();
-        return redirect()->route('admin.auth.login');
+        return redirect()->route('root');
     }
     /**
      * Display the specified resource.
@@ -60,8 +70,9 @@ class AdminController extends Controller
      */
     public function show($id)
     {
-        //
+     //
     }
+
     /**
      * Show the form for editing the specified resource.
      *
