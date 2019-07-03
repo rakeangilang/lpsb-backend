@@ -24,7 +24,7 @@
             <tr>
                 <th>No Pesanan</th>
                 <th>Nama Pemesan</th>
-                <th>Jenis Analisis</th>
+                <th>Harga</th>
                 <th>Tanggal Pengajuan Diterima</th>
                 <th>Status</th>
             </tr>

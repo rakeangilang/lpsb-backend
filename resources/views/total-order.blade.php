@@ -24,7 +24,7 @@
             <tr>
                 <th>No Pesanan</th>
                 <th>Nama Pemesan</th>
-                <th>Jenis Analisis</th>
+                <th>Total Harga</th>
                 <th>Status</th>
             </tr>
             </thead>

@@ -22,29 +22,21 @@
             <table id="example1" class="table table-bordered table-striped">
             <thead>
             <tr>
-                <th>No Pesanan</th>
+                <th style="width: 80px">No Pesanan</th>
                 <th>Nama Pemesan</th>
-                <th>Jenis Analisis</th>
+                <th>Total Harga</th>
                 <th>Tanggal Pengajuan</th>
             </tr>
             </thead>
             <tbody>
+            @foreach($orders as $order)
             <tr>
-                <td>Trident</td>
-                <td>Internet
-                Explorer 4.0
-                </td>
-                <td>Win 95+</td>
-                <td> 4</td>
+                <td>{{$order->NoPesanan}}</td>
+                <td>{{$order->Nama}}</td>
+                <td>{{$order->TotalHarga}}</td>
+                <td>{{$order->DiterimaTgl}}</td>
             </tr>
-            <tr>
-                <td>Trident</td>
-                <td>Internet
-                Explorer 5.0
-                </td>
-                <td>Win 95+</td>
-                <td>5</td>
-            </tr>
+            @endforeach
             </tbody>
             </table>
         </div>

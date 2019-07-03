@@ -13,7 +13,8 @@
 
 
 Route::get('/', 'HomeController@index')->name('root');
-Route::get('kelola-admin', 'AdminController@showall')->name('kelola-admin');
+Route::get('kelola-admin', 'AdminController@showAdmin')->name('kelola-admin');
+Route::get('incoming-order', 'PesananController@incomingOrder')->name('incoming-order');
 Auth::routes();
 
 
@@ -24,9 +25,9 @@ Route::get('/katalog/tambah', 'HomeController@tambahKatalog')->name('katalog-tam
 // PESANAN
 Route::get('/pesanan', 'HomeController@listPesanan')->name('pesanan-list');
 
-Route::get('/incoming-order', function () {
-    return view('incoming-order');
-});
+// Route::get('/incoming-order', function () {
+//     return view('incoming-order');
+// });
 
 Route::get('/ongoing-order', function () {
     return view('ongoing-order');
