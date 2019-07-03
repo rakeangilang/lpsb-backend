@@ -83,19 +83,23 @@
                   <table class="table table-striped">
                      <thead>
                         <tr>
+                           <th>Qty</th>
                            <th>Jenis Analisis</th>
-                           <th>Kategori</th>
                            <th>Metode</th>
-                           <th>Keterangan</th>
+                           <th>Jenis Sampel</th>
+                           <th>Bentuk Sampel</th>
+                           <th>Kemasan</th>
                            <th>Harga</th>
                         </tr>
                      </thead>
                      <tbody>
                         <tr>
-                           <td>Lorem ipsum</td>
+                           <td>1</td>
                            <td>Dolor sit amet</td>
-                           <td>Consectetur adipiscing elit</td>
-                           <td>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</td>
+                           <td>Consectetur</td> 
+                           <td>adipiscing elit</td>
+                           <td>Sed do eiusmod</td>
+                           <td>tempor incididunt</td>
                            <td>Rp100.000,00</td>
                         </tr>
                      </tbody>

@@ -17,6 +17,7 @@ Route::get('kelola-admin', 'AdminController@showAdmin')->name('kelola-admin');
 Route::get('incoming-order', 'PesananController@incomingOrder')->name('incoming-order');
 Route::get('ongoing-order', 'PesananController@ongoingOrder')->name('ongoing-order');
 Route::get('order-complete', 'PesananController@completeOrder')->name('order-complete');
+Route::get('total-order', 'PesananController@totalOrder')->name('total-order');
 
 Auth::routes();
 
@@ -40,9 +41,9 @@ Route::get('/pesanan', 'HomeController@listPesanan')->name('pesanan-list');
 //     return view('order-complete');
 // });
 
-Route::get('/total-order', function () {
-    return view('total-order');
-});
+// Route::get('/total-order', function () {
+//     return view('total-order');
+// });
 
 Route::get('/details', function () {
     return view('details');
