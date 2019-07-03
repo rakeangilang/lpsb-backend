@@ -30,24 +30,15 @@
             </tr>
             </thead>
             <tbody>
+            @foreach($orders as $order)
             <tr>
-                <td>Trident</td>
-                <td>Internet
-                Explorer 4.0
-                </td>
-                <td>Win 95+</td>
-                <td> 4</td>
-                <td>Z</td>
+                <td>{{$order->NoPesanan}}</td>
+                <td>{{$order->Nama}}</td>
+                <td style="text-align: right;">Rp. {{$order->TotalHarga}}</td>
+                <td>{{$order->DiterimaTgl}}</td>
+                <td>{{$order->IDStatus}}</td>
             </tr>
-            <tr>
-                <td>Trident</td>
-                <td>Internet
-                Explorer 5.0
-                </td>
-                <td>Win 95+</td>
-                <td>5</td>
-                <td>Z</td>
-            </tr>
+            @endforeach
             </tbody>
             </table>
         </div>

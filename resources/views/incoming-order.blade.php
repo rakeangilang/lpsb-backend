@@ -33,7 +33,7 @@
             <tr>
                 <td>{{$order->NoPesanan}}</td>
                 <td>{{$order->Nama}}</td>
-                <td>{{$order->TotalHarga}}</td>
+                <td style="text-align: right;">Rp. {{$order->TotalHarga}}</td>
                 <td>{{$order->DiterimaTgl}}</td>
             </tr>
             @endforeach
