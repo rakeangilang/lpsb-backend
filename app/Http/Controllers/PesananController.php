@@ -58,6 +58,25 @@ class PesananController extends Controller
         return view('ongoing-order',compact('orders'));
     }
 
+    public function completeOrder()
+    {
+        $orders=[];
+        $id_orders = DB::table('pelacakan')->Where('IDStatus','=','52')->get();
+        foreach ($id_orders as $id_order) {       
+
+            $pesanan = DB::table('pesanan')->where('IDPesanan','=',$id_order->IDPesanan)->select('IDPelanggan','NoPesanan','TotalHarga','SelesaiTgl')->get();
+            $pelanggan = DB::table('pelanggan')->where('IDPelanggan','=',$pesanan[0]->IDPelanggan)->select('Nama')->get();
+            $order = new \stdClass();
+            $order->Nama=$pelanggan[0]->Nama;
+            $order->NoPesanan=$pesanan[0]->NoPesanan;
+            $order->TotalHarga=$pesanan[0]->TotalHarga;
+            $order->SelesaiTgl=$pesanan[0]->SelesaiTgl;
+            array_push($orders, $order);
+        }
+        // dd($order);
+        return view('order-complete',compact('orders'));
+    }
+
     public function getPesanan(Request $request, User $user)
     {
     	try{
