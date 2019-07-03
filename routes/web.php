@@ -18,7 +18,7 @@ Route::get('incoming-order', 'PesananController@incomingOrder')->name('incoming-
 Route::get('ongoing-order', 'PesananController@ongoingOrder')->name('ongoing-order');
 Route::get('order-complete', 'PesananController@completeOrder')->name('order-complete');
 Route::get('total-order', 'PesananController@totalOrder')->name('total-order');
-
+Route::get('detail/{id}', 'PesananController@detailOrder')->name('detail-order');
 Auth::routes();
 
 

@@ -96,7 +96,18 @@ class PesananController extends Controller
         return view('total-order',compact('orders'));
     }
 
-
+    public function detailOrder($id){
+        $pesanan        = DB::table('pesanan')->where('IDPesanan','=',$id)->select('IDPelanggan','NoPesanan','TotalHarga')->get();
+        $id_pelanggan   = $pesanan[0]->IDPelanggan;
+        $pelanggan      = DB::table('pelanggan')->where('IDPelanggan','=',$id_pelanggan)->select('Nama','Alamat','NoHP','Email')->get();
+        $sampel         = DB::table('sampel')->where('IDPesanan','=',$id)->get();        
+        $pesanan        = $pesanan[0];
+        $pelanggan      = $pelanggan[0];
+        $tanggal        = Carbon::today()->toDateString();
+        // dd($sampel);
+        return view('details',compact('pesanan','pelanggan','sampel','tanggal','id'));
+    }
+    
     public function getPesanan(Request $request, User $user)
     {
     	try{

@@ -36,7 +36,7 @@
                <div class="col-xs-12">
                   <h2 class="page-header">
                      <i class="fa fa-globe"></i> Trop BRC.
-                     <small class="pull-right">Date: 24/06/2019</small>
+                     <small class="pull-right">Date: {{$tanggal}}</small>
                   </h2>
                </div>
                <!-- /.col -->
@@ -46,11 +46,10 @@
                <div class="col-sm-4 invoice-col">
                   From
                   <address>
-                  <strong>Zaki Geyan</strong><br>
-                     Jl. Lkr. Perwira No. 26A<br>
-                     Babakan, Dramaga, Bogor 16680<br>
-                     Phone: (+62) 895-3663-59576<br>
-                     Email: zaki_geyan@apps.ipb.ac.id
+                  <strong>{{$pelanggan->Nama}}</strong><br>
+                     {{$pelanggan->Alamat}}<br>
+                     Phone: {{$pelanggan->NoHP}}<br>
+                     Email: {{$pelanggan->Email}}
                   </address>
                </div>
                <!-- /.col -->
@@ -67,11 +66,9 @@
                </div>
                <!-- /.col -->
                <div class="col-sm-4 invoice-col">
-                  <b>Invoice #000001</b><br>
+                  <b>Invoice #{{$id}}</b><br>
                   <br>
-                  <b>Order ID:</b> 000001<br>
-                  <b>Payment Due:</b> 24/06/2014<br>
-                  <b>Account:</b> 555-1234
+                  <b>Order ID:</b> {{$id}}<br>
                </div>
                <!-- /.col -->
             </div>
@@ -93,15 +90,17 @@
                         </tr>
                      </thead>
                      <tbody>
+                     @foreach($sampel as $sam)
                         <tr>
-                           <td>1</td>
-                           <td>Dolor sit amet</td>
-                           <td>Consectetur</td> 
-                           <td>adipiscing elit</td>
-                           <td>Sed do eiusmod</td>
-                           <td>tempor incididunt</td>
-                           <td>Rp100.000,00</td>
+                           <td>{{$sam->Jumlah}}</td>
+                           <td>{{$sam->JenisAnalisis}}</td>
+                           <td>{{$sam->Metode}}</td> 
+                           <td>{{$sam->JenisSampel}}</td>
+                           <td>{{$sam->BentukSampel}}</td>
+                           <td>{{$sam->Kemasan}}</td>
+                           <td>{{$sam->HargaSampel}}</td>
                         </tr>
+                     @endforeach
                      </tbody>
                   </table>
                </div>
