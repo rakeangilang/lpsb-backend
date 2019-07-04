@@ -104,8 +104,31 @@ class PesananController extends Controller
         $pesanan        = $pesanan[0];
         $pelanggan      = $pelanggan[0];
         $tanggal        = Carbon::today()->toDateString();
-        // dd($sampel);
-        return view('details',compact('pesanan','pelanggan','sampel','tanggal','id'));
+        $dokumen        = DB::table('dokumenpesanan')->where('IDPesanan','=',$id)->get();
+        $dokumen        = $dokumen[0];
+        error_reporting(0);
+        $nomor_resi = $dokumen->BuktiPengiriman;
+        $list_kurir = array("jne", "jnt", "jet", "tiki", "pos", "pcp", "rpx", "sap", "dse", "wahana", "sicepat", "first");
+        $hasil = '';
+
+        foreach($list_kurir as $kurir) {
+            $req = ['id' => $nomor_resi, 'kurir' => $kurir];
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, 'https://api3.cekresi.co.id:443/allcnote.php');
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($req));
+            $output = curl_exec($ch);
+            curl_close($ch);
+
+            $hasil = (explode('<div style="margin-left:15px;margin-top:5px;"><b>Outbond</b></div>', $output))[1];
+            if($hasil != '')
+            {
+                break;
+            }
+        }
+        // dd($hasil);
+        // dd($dokumen);
+        return view('details',compact('pesanan','pelanggan','sampel','tanggal','dokumen','id','hasil'));
     }
     
     public function getPesanan(Request $request, User $user)

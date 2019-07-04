@@ -163,7 +163,7 @@
          </section>
          <!-- /.content -->
       </div>
-      <!-- /.box-body -->
+      <!-- /.box-body --> 
    </div>
    <!-- /.box -->
 </div>
@@ -184,7 +184,7 @@
       <div class="box-body">
          <section class="invoice">
             <div align="center">
-               <img src="https://ecs7.tokopedia.net/img/cache/700/product-1/2016/5/19/1130817/1130817_12bb07c5-eb1b-4e0a-9836-ffba6a72a300.jpg">
+               <img src="{{asset($dokumen->BuktiPembayaran)}}">
                <br>
             </div>
             <div class="row no-print">
@@ -221,23 +221,7 @@
          <section class="invoice">
             <div class="row">
                <div class="col-xs-12 table-responsive">
-                  <table class="table table-striped">
-                     <thead>
-                        <tr>
-                           <th>History</th>
-                        </tr>
-                     </thead>
-                     <tbody>
-                        <tr>
-                           <td>25-06-2019</td>
-                           <td>Manifested [SURABAYA]</td>
-                        </tr>
-                        <tr>
-                           <td>25-06-2019</td>
-                           <td>With Delivery Courier [BOGOR]</td>
-                        </tr>
-                     </tbody>
-                  </table>
+                  {!!html_entity_decode($hasil)!!}
                </div>
                <!-- /.col -->
             </div>   
