@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Katalog;
 use App\Kategori;
 use App\BentukSampel;
+use Illuminate\Support\Facades\DB; 
 
 class KatalogController extends Controller
 {
@@ -16,7 +17,8 @@ class KatalogController extends Controller
     
     public function kelolaKatalog()
     {
-        return view('kelola-katalog');
+        $katalog = DB::table('katalog')->get();
+        return view('kelola-katalog',compact('katalog'));
     }
 
     // ambil daftar katalog

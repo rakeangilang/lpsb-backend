@@ -25,8 +25,8 @@
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="tambah-admin"><i class="fa fa-circle-o"></i> Tambah Admin</a></li>
-                <li><a href="kelola-admin"><i class="fa fa-circle-o"></i> Kelola Admin</a></li>
+                <li><a href="/tambah-admin"><i class="fa fa-circle-o"></i> Tambah Admin</a></li>
+                <li><a href="/kelola-admin"><i class="fa fa-circle-o"></i> Kelola Admin</a></li>
                 <li><a href="#"><i class="fa fa-circle-o"></i> Kelola Pelanggan</a></li>
               </ul>
             </li>
@@ -38,8 +38,8 @@
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="tambah-katalog"><i class="fa fa-circle-o"></i> Tambah Katalog</a></li>
-                <li><a href="kelola-katalog"><i class="fa fa-circle-o"></i> Kelola Katalog</a></li>
+                <li><a href="/tambah-katalog"><i class="fa fa-circle-o"></i> Tambah Katalog</a></li>
+                <li><a href="/kelola-katalog"><i class="fa fa-circle-o"></i> Kelola Katalog</a></li>
               </ul>
             </li>
             <li class="treeview menu-close">
@@ -50,10 +50,10 @@
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="incoming-order"><i class="fa fa-circle-o"></i> Pesanan Masuk</a></li>
-                <li><a href="ongoing-order"><i class="fa fa-circle-o"></i> Pesanan dalam Proses</a></li>
-                <li><a href="order-complete"><i class="fa fa-circle-o"></i> Pesanan Selesai</a></li>
-                <li><a href="total-order"><i class="fa fa-circle-o"></i> Total Pesanan</a></li>
+                <li><a href="/incoming-order"><i class="fa fa-circle-o"></i> Pesanan Masuk</a></li>
+                <li><a href="/ongoing-order"><i class="fa fa-circle-o"></i> Pesanan dalam Proses</a></li>
+                <li><a href="/order-complete"><i class="fa fa-circle-o"></i> Pesanan Selesai</a></li>
+                <li><a href="/total-order"><i class="fa fa-circle-o"></i> Total Pesanan</a></li>
               </ul>
             </li>
           </ul>

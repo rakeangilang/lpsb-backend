@@ -25,20 +25,25 @@
                 <th>No</th>
                 <th>Kategori</th>
                 <th>Jenis Analisis</th>
-                <th>Harga</th>
+                <th>Harga IPB</th>
+                <th>Harga NON IPB</th>
                 <th>Metode</th>
                 <th>Keterangan</th>
             </tr>
             </thead>
             <tbody>
+            <?php $i=0 ?>
+            @foreach($katalog as $kat)
             <tr>
-                <td>1</td>
-                <td>Kategori 1</td>
-                <td>Jenis 1</td>
-                <td>1000</td>
-                <td>Prototype</td>
-                <td>Mantab gan</td>
+                <td>{{$i=$i+1}}</td>
+                <td>{{$kat->IDKategori}}</td>
+                <td>{{$kat->JenisAnalisis}}</td>
+                <td>{{$kat->HargaIPB}}</td>
+                <td>{{$kat->HargaNONIPB}}</td>
+                <td>{{$kat->Metode}}</td>
+                <td>{{$kat->Keterangan}}</td>
             </tr>
+            @endforeach
             </tbody>
             </table>
         </div>
