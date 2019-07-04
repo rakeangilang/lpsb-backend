@@ -8,7 +8,7 @@
               <img src="{{ asset('assets/dist/img/photo-profile.png') }}" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-              <p>Nama Admin</p>
+              <p>{{Auth::user()->name}}</p>
             </div>
           </div>
           <!-- search form -->

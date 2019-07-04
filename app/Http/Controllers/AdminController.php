@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Admin;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB; 
 
 class AdminController extends Controller
@@ -32,6 +33,119 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function incomingOrder()
+    {
+        $orders=[];
+        $id_orders = DB::table('pelacakan')->where('IDStatus','=','1')->get();
+        foreach ($id_orders as $id_order) {       
+
+            $pesanan = DB::table('pesanan')->where('IDPesanan','=',$id_order->IDPesanan)->select('IDPelanggan','NoPesanan','TotalHarga','DiterimaTgl')->get();
+            $pelanggan = DB::table('pelanggan')->where('IDPelanggan','=',$pesanan[0]->IDPelanggan)->select('Nama')->get();
+            $order = new \stdClass();
+            $order->Nama=$pelanggan[0]->Nama;
+            $order->NoPesanan=$pesanan[0]->NoPesanan;
+            $order->TotalHarga=$pesanan[0]->TotalHarga;
+            $order->DiterimaTgl=$pesanan[0]->DiterimaTgl;
+            array_push($orders, $order);
+        }
+        // dd($orders);
+        return view('incoming-order',compact('orders'));
+    }
+
+    public function ongoingOrder()
+    {
+        $orders=[];
+        $id_orders = DB::table('pelacakan')->where('IDStatus','!=','1')->Where('IDStatus','!=','52')->get();
+        foreach ($id_orders as $id_order) {       
+
+            $pesanan = DB::table('pesanan')->where('IDPesanan','=',$id_order->IDPesanan)->select('IDPelanggan','NoPesanan','TotalHarga','DiterimaTgl')->get();
+            $pelanggan = DB::table('pelanggan')->where('IDPelanggan','=',$pesanan[0]->IDPelanggan)->select('Nama')->get();
+            $order = new \stdClass();
+            $order->Nama=$pelanggan[0]->Nama;
+            $order->NoPesanan=$pesanan[0]->NoPesanan;
+            $order->TotalHarga=$pesanan[0]->TotalHarga;
+            $order->DiterimaTgl=$pesanan[0]->DiterimaTgl;
+            $order->IDStatus=$id_order->IDStatus;
+            array_push($orders, $order);
+        }
+        // dd($order);
+        return view('ongoing-order',compact('orders'));
+    }
+
+    public function completeOrder()
+    {
+        $orders=[];
+        $id_orders = DB::table('pelacakan')->Where('IDStatus','=','52')->get();
+        foreach ($id_orders as $id_order) {       
+
+            $pesanan = DB::table('pesanan')->where('IDPesanan','=',$id_order->IDPesanan)->select('IDPelanggan','NoPesanan','TotalHarga','SelesaiTgl')->get();
+            $pelanggan = DB::table('pelanggan')->where('IDPelanggan','=',$pesanan[0]->IDPelanggan)->select('Nama')->get();
+            $order = new \stdClass();
+            $order->Nama=$pelanggan[0]->Nama;
+            $order->NoPesanan=$pesanan[0]->NoPesanan;
+            $order->TotalHarga=$pesanan[0]->TotalHarga;
+            $order->SelesaiTgl=$pesanan[0]->SelesaiTgl;
+            array_push($orders, $order);
+        }
+        // dd($order);
+        return view('order-complete',compact('orders'));
+    }
+
+    public function totalOrder()
+    {
+        $orders=[];
+        $id_orders = DB::table('pelacakan')->get();
+        foreach ($id_orders as $id_order) {       
+
+            $pesanan = DB::table('pesanan')->where('IDPesanan','=',$id_order->IDPesanan)->select('IDPelanggan','NoPesanan','TotalHarga')->get();
+            $pelanggan = DB::table('pelanggan')->where('IDPelanggan','=',$pesanan[0]->IDPelanggan)->select('Nama')->get();
+            $order = new \stdClass();
+            $order->Nama=$pelanggan[0]->Nama;
+            $order->NoPesanan=$pesanan[0]->NoPesanan;
+            $order->TotalHarga=$pesanan[0]->TotalHarga;
+            $order->IDStatus=$id_order->IDStatus;
+            array_push($orders, $order);
+        }
+        // dd($order);
+        return view('total-order',compact('orders'));
+    }
+
+    public function detailOrder($id){
+        $pesanan        = DB::table('pesanan')->where('IDPesanan','=',$id)->select('IDPelanggan','NoPesanan','TotalHarga')->get();
+        $id_pelanggan   = $pesanan[0]->IDPelanggan;
+        $pelanggan      = DB::table('pelanggan')->where('IDPelanggan','=',$id_pelanggan)->select('Nama','Alamat','NoHP','Email')->get();
+        $sampel         = DB::table('sampel')->where('IDPesanan','=',$id)->get();        
+        $pesanan        = $pesanan[0];
+        $pelanggan      = $pelanggan[0];
+        $tanggal        = Carbon::today()->toDateString();
+        $deadline       = Carbon::tomorrow()->toDateString();
+        $dokumen        = DB::table('dokumenpesanan')->where('IDPesanan','=',$id)->get();
+        $dokumen        = $dokumen[0];
+        error_reporting(0);
+        $nomor_resi = $dokumen->BuktiPengiriman;
+        $list_kurir = array("jnt", "jne", "jet", "tiki", "pos", "sicepat", "wahana", "pcp", "rpx", "sap", "dse", "first");
+        $hasil = '';
+
+        foreach($list_kurir as $kurir) {
+            $req = ['id' => $nomor_resi, 'kurir' => $kurir];
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, 'https://api3.cekresi.co.id:443/allcnote.php');
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($req));
+            $output = curl_exec($ch);
+            curl_close($ch);
+
+            $hasil = (explode('<div style="margin-left:15px;margin-top:5px;"><b>Outbond</b></div>', $output))[1];
+            if($hasil != '')
+            {
+                break;
+            }
+        }
+        // dd($hasil);
+        // dd($deadline);
+        return view('details',compact('pesanan','pelanggan','sampel','tanggal','dokumen','id','hasil','deadline'));
+    }
+    
     public function create()
     {
         return view('admin.auth.register');

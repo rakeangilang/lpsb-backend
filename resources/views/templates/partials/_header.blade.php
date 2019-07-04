@@ -21,7 +21,7 @@
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   {{-- <img src="{{ asset('assets/dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image"> --}}
-                  <span class="hidden-xs">Nama Admin</span>
+                  <span class="hidden-xs">{{Auth::user()->name}}</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
@@ -29,7 +29,7 @@
                     <img src="{{ asset('assets/dist/img/photo-profile.png') }}" class="img-circle" alt="User Image">
     
                     <p>
-                      Nama Admin
+                      {{Auth::user()->name}}
                       <small>Admin</small>
                     </p>
                   </li>
@@ -41,7 +41,12 @@
                       <a href="#" class="btn btn-default btn-flat">Profil</a>
                     </div>
                     <div class="pull-right">
-                      <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                      <a href="{{ route('logout') }}" class="btn btn-default btn-flat" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
+                          Logout
+                      </a>    
+                      <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+                          {{ csrf_field() }}
+                      </form>
                     </div>
                   </li>
                 </ul>

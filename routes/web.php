@@ -12,22 +12,35 @@
 */
 
 
-Route::get('/', 'HomeController@index')->name('root');
-Route::get('kelola-admin', 'AdminController@showAdmin')->name('kelola-admin');
-Route::get('incoming-order', 'PesananController@incomingOrder')->name('incoming-order');
-Route::get('ongoing-order', 'PesananController@ongoingOrder')->name('ongoing-order');
-Route::get('order-complete', 'PesananController@completeOrder')->name('order-complete');
-Route::get('total-order', 'PesananController@totalOrder')->name('total-order');
-Route::get('detail/{id}', 'PesananController@detailOrder')->name('detail-order');
+
 Auth::routes();
 
+Route::middleware('auth:admin')->group(function(){
+  Route::get('/', 'HomeController@index')->name('root');
+  Route::get('kelola-admin', 'AdminController@showAdmin')->name('kelola-admin');
+  Route::get('incoming-order', 'AdminController@incomingOrder')->name('incoming-order');
+  Route::get('ongoing-order', 'AdminController@ongoingOrder')->name('ongoing-order');
+  Route::get('order-complete', 'AdminController@completeOrder')->name('order-complete');
+  Route::get('total-order', 'AdminController@totalOrder')->name('total-order');
+  Route::get('detail/{id}', 'AdminController@detailOrder')->name('detail-order');
+});
 
+Route::prefix('admin')->group(function () {
+  Route::get('/', 'AdminController@index')->name('admin.dashboard');
+  Route::get('dashboard', 'AdminController@index')->name('admin.dashboard');
+  Route::get('register', 'AdminController@create')->name('admin.register');
+  Route::post('register', 'AdminController@store')->name('admin.register.store');
+  Route::get('login', 'Auth\Admin\LoginController@login')->name('admin.auth.login');
+  Route::post('login', 'Auth\Admin\LoginController@loginAdmin')->name('admin.auth.loginAdmin');
+  Route::post('logout', 'Auth\Admin\LoginController@logout')->name('admin.auth.logout');
+  
+  });
 // KATALOG
-Route::get('/katalog/tambah', 'HomeController@tambahKatalog')->name('katalog-tambah');
+// Route::get('/katalog/tambah', 'HomeController@tambahKatalog')->name('katalog-tambah');
 
 
 // PESANAN
-Route::get('/pesanan', 'HomeController@listPesanan')->name('pesanan-list');
+// Route::get('/pesanan', 'HomeController@listPesanan')->name('pesanan-list');
 
 // Route::get('/incoming-order', function () {
 //     return view('incoming-order');
@@ -76,13 +89,3 @@ Route::get('/tambah-admin', function () {
 Route::get('/update-admin', function () {
     return view('update-admin');
 });
-
-Route::prefix('admin')->group(function () {
-  Route::get('/', 'AdminController@index')->name('admin.dashboard');
-  Route::get('dashboard', 'AdminController@index')->name('admin.dashboard');
-  Route::get('register', 'AdminController@create')->name('admin.register');
-  Route::post('register', 'AdminController@store')->name('admin.register.store');
-  Route::get('login', 'Auth\Admin\LoginController@login')->name('admin.auth.login');
-  Route::post('login', 'Auth\Admin\LoginController@loginAdmin')->name('admin.auth.loginAdmin');
-  Route::post('logout', 'Auth\Admin\LoginController@logout')->name('admin.auth.logout');
-  });
