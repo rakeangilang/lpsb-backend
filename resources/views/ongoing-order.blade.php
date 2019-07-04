@@ -24,7 +24,7 @@
             <tr>
                 <th>No Pesanan</th>
                 <th>Nama Pemesan</th>
-                <th>Harga</th>
+                <th>Harga (IDR)</th>
                 <th>Tanggal Pengajuan Diterima</th>
                 <th>Status</th>
             </tr>
@@ -34,7 +34,7 @@
             <tr>
                 <td>{{$order->NoPesanan}}</td>
                 <td>{{$order->Nama}}</td>
-                <td style="text-align: right;">Rp. {{$order->TotalHarga}}</td>
+                <td style="text-align: right;"><?php echo number_format($order->TotalHarga, 2, ",", "."); ?></td>
                 <td>{{$order->DiterimaTgl}}</td>
                 <td>{{$order->IDStatus}}</td>
             </tr>

@@ -24,7 +24,7 @@
             <tr>
                 <th>No Pesanan</th>
                 <th>Nama Pemesan</th>
-                <th>Total Harga</th>
+                <th>Total Harga (IDR)</th>
                 <th>Tanggal Selesai</th>
             </tr>
             </thead>
@@ -33,7 +33,7 @@
             <tr>
                 <td>{{$order->NoPesanan}}</td>
                 <td>{{$order->Nama}}</td>
-                <td style="text-align: right;">Rp. {{$order->TotalHarga}}</td>
+                <td style="text-align: right;"><?php echo number_format($order->TotalHarga, 2, ",", "."); ?></td>
                 <td>{{$order->SelesaiTgl}}</td>
             </tr>
             @endforeach
