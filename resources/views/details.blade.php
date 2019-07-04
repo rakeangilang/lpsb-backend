@@ -124,7 +124,7 @@
                   </div> -->
                <!-- /.col -->
                <div class="col-xs-6">
-                  <p class="lead">Amount Due 26/06/2019</p>
+                  <p class="lead">Amount Due {{$deadline}}</p>
                   <div class="table-responsive">
                      <table class="table">
                         <tr>
@@ -141,7 +141,7 @@
                         </tr>
                         <tr>
                            <th>Total:</th>
-                           <td>Rp135.000,00</td>
+                           <td>Rp<?php echo number_format($pesanan->TotalHarga, 2, ",", "."); ?></td>
                         </tr>
                      </table>
                   </div>
@@ -153,10 +153,10 @@
             <div class="row no-print">
                <div class="col-xs-12">
                   <a href="print-invoice" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
-                  <button type="button" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Terima
+                  <button type="button" class="btn btn-success pull-right"><i class="fa fa-check"></i> Terima
                   </button>
                   <button type="button" class="btn btn-danger pull-right" style="margin-right: 5px;">
-                  <i class="fa fa-download"></i> Tolak
+                  <i class="fa fa-remove"></i> Tolak
                   </button>
                </div>
             </div>
@@ -189,10 +189,10 @@
             </div>
             <div class="row no-print">
                <div class="col-xs-12">
-                  <button type="button" class="btn btn-success pull-right">
+                  <button type="button" class="btn btn-success pull-right"><i class="fa fa-check"></i>
                   Terima
                   </button>
-                  <button type="button" class="btn btn-danger pull-right" style="margin-right: 5px;">
+                  <button type="button" class="btn btn-danger pull-right" style="margin-right: 5px;"><i class="fa fa-remove"></i>
                   Tolak
                   </button>
                </div>
@@ -224,10 +224,21 @@
                   {!!html_entity_decode($hasil)!!}
                </div>
                <!-- /.col -->
+            </div>
+            <div class="row no-print">
+               <div class="col-xs-12">
+                  <button type="button" class="btn btn-success pull-right"><i class="fa fa-check"></i>
+                  Terima
+                  </button>
+                  <button type="button" class="btn btn-danger pull-right" style="margin-right: 5px;"><i class="fa fa-remove"></i>
+                  Tolak
+                  </button>
+               </div>
             </div>   
             <!-- /.box-header -->
          <!-- /.box-body -->
          </section>
+
          <!-- /.box -->
       </div>
       <!-- /.box-body -->
@@ -252,7 +263,7 @@
       <div class="box-body">
          <section class="invoice">
             <div align="center">
-               <img src="http://3.bp.blogspot.com/-1AZWrPsTT6g/T8Csrlgzq4I/AAAAAAAAAMs/nLCjyKf6ypw/s1600/kandungan+ternak.png">
+               <img src="{{asset($dokumen->Sertifikat)}}">
                <br>
             </div>
             <br>
@@ -286,7 +297,7 @@
                </div>
                <!-- /.box-body -->
                <div class="box-footer">   
-                  <button type="submit" class="btn btn-success pull-right">Kirim</button>
+                  <button type="submit" class="btn btn-success pull-right"><i class="fa fa-send"></i> Kirim</button>
                </div>
                <!-- /.box-footer -->
                </form>

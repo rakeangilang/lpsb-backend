@@ -104,11 +104,12 @@ class PesananController extends Controller
         $pesanan        = $pesanan[0];
         $pelanggan      = $pelanggan[0];
         $tanggal        = Carbon::today()->toDateString();
+        $deadline       = Carbon::tomorrow()->toDateString();
         $dokumen        = DB::table('dokumenpesanan')->where('IDPesanan','=',$id)->get();
         $dokumen        = $dokumen[0];
         error_reporting(0);
         $nomor_resi = $dokumen->BuktiPengiriman;
-        $list_kurir = array("jne", "jnt", "jet", "tiki", "pos", "pcp", "rpx", "sap", "dse", "wahana", "sicepat", "first");
+        $list_kurir = array("jnt", "jne", "jet", "tiki", "pos", "sicepat", "wahana", "pcp", "rpx", "sap", "dse", "first");
         $hasil = '';
 
         foreach($list_kurir as $kurir) {
@@ -127,8 +128,8 @@ class PesananController extends Controller
             }
         }
         // dd($hasil);
-        // dd($dokumen);
-        return view('details',compact('pesanan','pelanggan','sampel','tanggal','dokumen','id','hasil'));
+        // dd($deadline);
+        return view('details',compact('pesanan','pelanggan','sampel','tanggal','dokumen','id','hasil','deadline'));
     }
     
     public function getPesanan(Request $request, User $user)
