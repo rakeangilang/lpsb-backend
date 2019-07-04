@@ -9,7 +9,7 @@
     <small>Tambahkan Admin</small>
   </h1>
   <ol class="breadcrumb">
-    <li><a href="#"><i class="fa fa-dashboard"></i> Beranda</a></li>
+    <li><a href="/"><i class="fa fa-dashboard"></i> Beranda</a></li>
     <li class="active">Pengguna</li>
     <li class="active">Tambah Admin</li>
   </ol>

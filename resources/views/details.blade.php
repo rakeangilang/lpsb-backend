@@ -8,8 +8,8 @@
       <small>Jenis Analisis Sampel</small>
    </h1>
    <ol class="breadcrumb">
-      <li><a href="#"><i class="fa fa-dashboard"></i> Beranda</a></li>
-      <li class="active">Dashboard</li>
+      <li><a href="/"><i class="fa fa-dashboard"></i> Beranda</a></li>
+      <li class="active">Pesanan</li>
       <li class="active">Detail Order</li>
    </ol>
 </section>

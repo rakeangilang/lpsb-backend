@@ -44,7 +44,7 @@
             </li>
             <li class="treeview menu-close">
               <a href="#">
-                <i class="fa fa-flask"></i> <span>Pesanan</span>
+                <i class="fa fa-shopping-cart"></i> <span>Pesanan</span>
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>

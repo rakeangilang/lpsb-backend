@@ -5,13 +5,13 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Incoming Order
+        Pesanan Masuk
         <small>Permintaan Analisis Sampel</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Beranda</a></li>
-        <li class="active">Dashboard</li>
-        <li class="active">Incoming Order</li>
+        <li><a href="/"><i class="fa fa-dashboard"></i> Beranda</a></li>
+        <li class="active">Pesanan</li>
+        <li class="active">Pesanan Masuk</li>
       </ol>
     </section>
 

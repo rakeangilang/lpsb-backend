@@ -6,12 +6,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Order
-        <small>Pemesanan Jasa Analisis</small>
+        Pesanan
+        <small>Jasa Analisis Sampel</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Beranda</a></li>
-        <li class="active">Dashboard</li>
+        <li><a href="/"><i class="fa fa-dashboard"></i> Beranda</a></li>
+        <li class="active">Pesanan</li>
       </ol>
     </section>
 
@@ -30,7 +30,7 @@
               <i class="fa fa-shopping-cart"></i>
             </div>
             <a href="incoming-order" class="small-box-footer">
-              More info <i class="fa fa-arrow-circle-right"></i>
+              Klik disini <i class="fa fa-arrow-circle-right"></i>
             </a>
           </div>
         </div>
@@ -46,7 +46,7 @@
               <i class="fa fa-shopping-cart"></i>
             </div>
             <a href="ongoing-order" class="small-box-footer">
-              More info <i class="fa fa-arrow-circle-right"></i>
+              Klik disini <i class="fa fa-arrow-circle-right"></i>
             </a>
           </div>
         </div>
@@ -62,7 +62,7 @@
               <i class="fa fa-shopping-cart"></i>
             </div>
             <a href="order-complete" class="small-box-footer">
-              More info <i class="fa fa-arrow-circle-right"></i>
+              Klik disini <i class="fa fa-arrow-circle-right"></i>
             </a>
           </div>
         </div>
@@ -77,7 +77,7 @@
               <i class="fa fa-shopping-cart"></i>
             </div>
             <a href="total-order" class="small-box-footer">
-              More info <i class="fa fa-arrow-circle-right"></i>
+              Klik disini <i class="fa fa-arrow-circle-right"></i>
             </a>
           </div>
         </div>
