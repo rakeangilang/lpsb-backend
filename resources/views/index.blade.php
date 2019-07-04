@@ -24,7 +24,7 @@
           <div class="small-box bg-red">
             <div class="inner">
               <h3>{{$incoming_order}}</h3>
-              <p>Incoming Order</p>
+              <p>Pesanan Masuk</p>
             </div>
             <div class="icon">
               <i class="fa fa-shopping-cart"></i>
@@ -40,7 +40,7 @@
           <div class="small-box bg-yellow">
             <div class="inner">
               <h3>{{$ongoing_order}}</h3>
-              <p>On-going Order</p>
+              <p>Pesanan dalam Proses</p>
             </div>
             <div class="icon">
               <i class="fa fa-shopping-cart"></i>
@@ -56,7 +56,7 @@
           <div class="small-box bg-green">
             <div class="inner">
               <h3>{{$complete_order}}</h3>
-              <p>Order Complete</p>
+              <p>Pesanan Selesai</p>
             </div>
             <div class="icon">
               <i class="fa fa-shopping-cart"></i>
@@ -71,7 +71,7 @@
           <div class="small-box bg-aqua">
             <div class="inner">
               <h3>{{$total_order}}</h3>
-              <p>Total Order</p>
+              <p>Total Pesanan</p>
             </div>
             <div class="icon">
               <i class="fa fa-shopping-cart"></i>

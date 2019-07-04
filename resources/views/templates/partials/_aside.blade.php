@@ -42,10 +42,19 @@
                 <li><a href="kelola-katalog"><i class="fa fa-circle-o"></i> Kelola Katalog</a></li>
               </ul>
             </li>
-            <li class="menu-open">
-              <a href="{{ route('pesanan-list')}}">
-                <i class="fa fa-shopping-cart"></i> <span>Pesanan</span>
+            <li class="treeview menu-close">
+              <a href="#">
+                <i class="fa fa-flask"></i> <span>Pesanan</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
               </a>
+              <ul class="treeview-menu">
+                <li><a href="incoming-order"><i class="fa fa-circle-o"></i> Pesanan Masuk</a></li>
+                <li><a href="ongoing-order"><i class="fa fa-circle-o"></i> Pesanan dalam Proses</a></li>
+                <li><a href="order-complete"><i class="fa fa-circle-o"></i> Pesanan Selesai</a></li>
+                <li><a href="total-order"><i class="fa fa-circle-o"></i> Total Pesanan</a></li>
+              </ul>
             </li>
           </ul>
         </section>
