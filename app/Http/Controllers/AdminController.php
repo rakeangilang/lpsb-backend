@@ -21,6 +21,12 @@ class AdminController extends Controller
         return view('admin.dashboard');
     }
     
+    public function tambahAdmin()
+    {
+        return view('tambah-admin');
+
+    }
+
     public function showAdmin()
     {
         $admins = DB::table('admins')->get();

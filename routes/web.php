@@ -23,6 +23,9 @@ Route::middleware('auth:admin')->group(function(){
   Route::get('order-complete', 'AdminController@completeOrder')->name('order-complete');
   Route::get('total-order', 'AdminController@totalOrder')->name('total-order');
   Route::get('detail/{id}', 'AdminController@detailOrder')->name('detail-order');
+  Route::get('tambah-admin', 'AdminController@tambahAdmin')->name('tambah-admin');
+  Route::get('tambah-katalog', 'KatalogController@tambahKatalog')->name('tambah-katalog');
+  Route::get('kelola-katalog', 'KatalogController@kelolaKatalog')->name('kelola-katalog');
 });
 
 Route::prefix('admin')->group(function () {
@@ -66,21 +69,21 @@ Route::get('/print-invoice', function () {
     return view('print-invoice');
 });
 
-Route::get('/tambah-katalog', function () {
-    return view('tambah-katalog');
-});
+// Route::get('/tambah-katalog', function () {
+//     return view('tambah-katalog');
+// });
 
-Route::get('/kelola-katalog', function () {
-    return view('kelola-katalog');
-});
+// Route::get('/kelola-katalog', function () {
+//     return view('kelola-katalog');
+// });
 
 Route::get('/update-katalog', function () {
     return view('update-katalog');
 });
 
-Route::get('/tambah-admin', function () {
-    return view('tambah-admin');
-});
+// Route::get('/tambah-admin', function () {
+//     return view('tambah-admin');
+// });
 
 // Route::get('/kelola-admin', function () {
 //     return view('kelola-admin');

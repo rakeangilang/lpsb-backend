@@ -9,6 +9,16 @@ use App\BentukSampel;
 
 class KatalogController extends Controller
 {
+    public function tambahKatalog()
+    {
+        return view('tambah-katalog');
+    }
+    
+    public function kelolaKatalog()
+    {
+        return view('kelola-katalog');
+    }
+
     // ambil daftar katalog
     public function getAllKatalog()
     {
