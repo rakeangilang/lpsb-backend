@@ -16,6 +16,7 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         return view('admin.dashboard');
@@ -62,8 +63,9 @@ class AdminController extends Controller
     {
         $orders=[];
         $id_orders = DB::table('pelacakan')->where('IDStatus','!=','1')->Where('IDStatus','!=','52')->get();
+        $status = DB::table('statuspelacakan')->get();
         foreach ($id_orders as $id_order) {       
-
+            $status = DB::table('statuspelacakan')->where('IDStatus','=',$id_order->IDStatus)->get();
             $pesanan = DB::table('pesanan')->where('IDPesanan','=',$id_order->IDPesanan)->select('IDPelanggan','NoPesanan','TotalHarga','DiterimaTgl')->get();
             $pelanggan = DB::table('pelanggan')->where('IDPelanggan','=',$pesanan[0]->IDPelanggan)->select('Nama')->get();
             $order = new \stdClass();
@@ -71,7 +73,7 @@ class AdminController extends Controller
             $order->NoPesanan=$pesanan[0]->NoPesanan;
             $order->TotalHarga=$pesanan[0]->TotalHarga;
             $order->DiterimaTgl=$pesanan[0]->DiterimaTgl;
-            $order->IDStatus=$id_order->IDStatus;
+            $order->IDStatus= $status[0]->Status;
             array_push($orders, $order);
         }
         // dd($order);
@@ -83,7 +85,6 @@ class AdminController extends Controller
         $orders=[];
         $id_orders = DB::table('pelacakan')->Where('IDStatus','=','52')->get();
         foreach ($id_orders as $id_order) {       
-
             $pesanan = DB::table('pesanan')->where('IDPesanan','=',$id_order->IDPesanan)->select('IDPelanggan','NoPesanan','TotalHarga','SelesaiTgl')->get();
             $pelanggan = DB::table('pelanggan')->where('IDPelanggan','=',$pesanan[0]->IDPelanggan)->select('Nama')->get();
             $order = new \stdClass();
@@ -101,15 +102,16 @@ class AdminController extends Controller
     {
         $orders=[];
         $id_orders = DB::table('pelacakan')->get();
+        
         foreach ($id_orders as $id_order) {       
-
+            $status = DB::table('statuspelacakan')->where('IDStatus','=',$id_order->IDStatus)->get();
             $pesanan = DB::table('pesanan')->where('IDPesanan','=',$id_order->IDPesanan)->select('IDPelanggan','NoPesanan','TotalHarga')->get();
             $pelanggan = DB::table('pelanggan')->where('IDPelanggan','=',$pesanan[0]->IDPelanggan)->select('Nama')->get();
             $order = new \stdClass();
             $order->Nama=$pelanggan[0]->Nama;
             $order->NoPesanan=$pesanan[0]->NoPesanan;
             $order->TotalHarga=$pesanan[0]->TotalHarga;
-            $order->IDStatus=$id_order->IDStatus;
+            $order->IDStatus= $status[0]->Status;
             array_push($orders, $order);
         }
         // dd($order);

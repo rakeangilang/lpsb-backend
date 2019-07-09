@@ -26,6 +26,7 @@ Route::middleware('auth:admin')->group(function(){
   Route::get('tambah-admin', 'AdminController@tambahAdmin')->name('tambah-admin');
   Route::get('tambah-katalog', 'KatalogController@tambahKatalog')->name('tambah-katalog');
   Route::get('kelola-katalog', 'KatalogController@kelolaKatalog')->name('kelola-katalog');
+  Route::post('tambah-katalog','KatalogController@addKatalog')->name('tambah-katalog.post');
   Route::get('tambah-kategori', 'KatalogController@tambahKategori')->name('tambah-kategori');
 });
 

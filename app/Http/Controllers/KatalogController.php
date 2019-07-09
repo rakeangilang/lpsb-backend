@@ -10,9 +10,38 @@ use Illuminate\Support\Facades\DB;
 
 class KatalogController extends Controller
 {
+    public function addKatalog(Request $request)
+    {   
+        // $this->validate(request(),
+        // [
+        //     'kategori' => 'required',
+        //     'jenis_analisis' => 'required',
+        //     'harga_ipb' => 'required',
+        //     'harga_nonipb' => 'required',
+        //     'metode' => 'required',
+        //     'keterangan' => 'required',
+        //     'status' => 'required',
+        //     'foto' => 'required'
+        // ]);
+        // dd($request->input('kategori'));
+        $katalog = new Katalog;
+        $katalog->IDKategori = $request->input('kategori');
+        $katalog->JenisAnalisis = $request->input( 'jenis_analisis');
+        $katalog->HargaIPB = $request->input('harga_ipb');
+        $katalog->HargaNONIPB = $request->input('harga_nonipb');
+        $katalog->Metode = $request->input('metode');
+        $katalog->Keterangan = $request->input('keterangan');
+        $katalog->StatusAktif = $request->input('status');
+        $katalog->FotoKatalog = $request->input('foto');
+        // dd($katalog);
+        $katalog->save();
+        return redirect()->route('root')->with(['success' => 'Post berhasil ditambahkan!']);
+    }
+
     public function tambahKatalog()
     {
-        return view('tambah-katalog');
+        $kats = DB::table('kategori')->select('Kategori')->get();
+        return view('tambah-katalog',compact('kats'));
     }
     
     public function kelolaKatalog()

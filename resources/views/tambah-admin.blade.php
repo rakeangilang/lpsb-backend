@@ -86,7 +86,8 @@
       <div class="form-group">
         <div class="col-md-4 col-md-offset-4">
           <button type="submit" class="btn btn-primary">
-          Tambahkan
+          <i class="fa fa-plus"></i>
+           Tambahkan
           </button>
         </div>
       </div>
