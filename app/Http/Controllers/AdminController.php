@@ -131,7 +131,7 @@ class AdminController extends Controller
         $dokumen        = $dokumen[0];
         error_reporting(0);
         $nomor_resi = $dokumen->BuktiPengiriman;
-        $list_kurir = array("jnt", "jne", "jet", "tiki", "pos", "sicepat", "wahana", "pcp", "rpx", "sap", "dse", "first");
+        $list_kurir = array("jnt", "jne", "jet", "tiki", "pos", "sicepat", "wahana", "pcp", "rpx", "sap", "dse", "first",'id_pelanggan');
         $hasil = '';
 
         foreach($list_kurir as $kurir) {
@@ -152,6 +152,53 @@ class AdminController extends Controller
         // dd($hasil);
         // dd($deadline);
         return view('details',compact('pesanan','pelanggan','sampel','tanggal','dokumen','id','hasil','deadline'));
+    }
+
+    public function setStatus($id,$status)
+    {
+        try{
+            $waktu_sekarang = Carbon::now('Asia/Jakarta')->toDateTimeString();
+            $id_pelanggan = $id;
+            $id_pesanan = Pesanan::select('IDPesanan')->where('IDPelanggan', $id_pelanggan)->where('IDPesanan', $request->IDPesanan)->first();
+            $id_pesanan = $id_pesanan->IDPesanan;
+            $set_status = $status;
+
+            if($set_status!=21 && $set_status!=22 && $set_status!=51 && $set_status!=52){
+                Pelacakan::where('IDPesanan', $id_pesanan)->update(['IDStatus' => $set_status, 'UpdateTerakhir' => $waktu_sekarang]);
+            }
+            
+            // jika kode batal
+            if($set_status == 7){
+                AdministrasiPesanan::where('IDPesanan', $id_pesanan)->update(['CatatanPembatalan'=>$request->Alasan]);
+            }
+            elseif($set_status == 21){
+                Pelacakan::where('IDPesanan', $id_pesanan)->update(['Pembayaran'=>3]);
+                //AdministrasiPesanan::where('IDPesanan', $id_pesanan)->update(['VerifikasiPembayaran'=>1]);
+            }
+            elseif ($set_status == 22) {
+                Pelacakan::where('IDPesanan', $id_pesanan)->update(['KirimSampel'=>3]);
+                AdministrasiPesanan::where('IDPesanan', $id_pesanan)->update([
+                    'PenerimaSampel'=>$request->PenerimaSampel,
+                    'Jabatan'=>$request->Jabatan
+                    ]);
+            }
+            // jika kode sisa sampel dikirim
+            elseif($set_status == 51){
+                DokumenPesanan::where('IDPesanan', $id_pesanan)->update(['BuktiPengembalianSampel'=>$request->Resi]);
+                Pelacakan::where('IDPesanan', $id_pesanan)->update(['SisaSampel'=>2]);
+            }
+            // jika kode sertifikat dikirim
+            elseif($set_status == 52){
+                DokumenPesanan::where('IDPesanan', $id_pesanan)->update(['BuktiPengirimanSertifikat'=>$request->Resi]);
+                Pelacakan::where('IDPesanan', $id_pesanan)->update(['KirimSertifikat'=>2]);   
+            }
+
+            //return response()->json(['new status'=>$set_status, 'pel'=>$pelanggan]);
+            return redirect()->route('newPemberitahuan', ['pes'=>$id_pesanan,'stat'=>$set_status, 'pel'=>$id_pelanggan]);
+        }
+        catch(\Exception $e) {
+            return response()->json(['success'=>false, 'message'=>$e->getMessage(),'Status'=>500], 200);
+        }      
     }
     
     public function create()

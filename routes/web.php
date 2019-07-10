@@ -29,6 +29,7 @@ Route::middleware('auth:admin')->group(function(){
   Route::post('tambah-katalog','KatalogController@addKatalog')->name('tambah-katalog.post');
   Route::get('tambah-kategori', 'KatalogController@tambahKategori')->name('tambah-kategori');
   Route::post('tambah-kategori', 'KatalogController@addKategori')->name('tambah-kategori.post');
+  Route::get('status/{id}/{status}','AdminController@setStatus')->name('set-status');
 });
 
 Route::prefix('admin')->group(function () {
