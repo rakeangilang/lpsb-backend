@@ -21,6 +21,11 @@ class KatalogController extends Controller
         return view('kelola-katalog',compact('katalog'));
     }
 
+    public function tambahKategori()
+    {
+        return view('tambah-kategori');
+    }
+
     // ambil daftar katalog
     public function getAllKatalog()
     {

@@ -40,6 +40,7 @@
               <ul class="treeview-menu">
                 <li><a href="/tambah-katalog"><i class="fa fa-circle-o"></i> Tambah Katalog</a></li>
                 <li><a href="/kelola-katalog"><i class="fa fa-circle-o"></i> Kelola Katalog</a></li>
+                <li><a href="/tambah-kategori"><i class="fa fa-circle-o"></i> Tambah Kategori</a></li>
               </ul>
             </li>
             <li class="treeview menu-close">
