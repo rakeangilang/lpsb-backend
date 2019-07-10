@@ -9,20 +9,34 @@ use App\BentukSampel;
 use Illuminate\Support\Facades\DB; 
 
 class KatalogController extends Controller
-{
+{   
+    public function addKategori(Request $request)
+    {
+        $this->validate(request(),
+        [
+            'nama' => 'required',
+            'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
+        $kategori = new Kategori;
+        $kategori->Kategori = $request->input('nama');
+        $kategori->FotoKategori = time().'.'.request()->foto->getClientOriginalExtension();
+        request()->foto->move(public_path('kategori'), $kategori->FotoKategori); 
+        $kategori->save();  
+        return redirect()->route('root')->with(['success'=>'Kategori berhasil ditambahkan']);
+    }
     public function addKatalog(Request $request)
     {   
-        // $this->validate(request(),
-        // [
-        //     'kategori' => 'required',
-        //     'jenis_analisis' => 'required',
-        //     'harga_ipb' => 'required',
-        //     'harga_nonipb' => 'required',
-        //     'metode' => 'required',
-        //     'keterangan' => 'required',
-        //     'status' => 'required',
-        //     'foto' => 'required'
-        // ]);
+        $this->validate(request(),
+        [
+            'kategori' => 'required',
+            'jenis_analisis' => 'required',
+            'harga_ipb' => 'required',
+            'harga_nonipb' => 'required',
+            'metode' => 'required',
+            'keterangan' => 'required',
+            'status' => 'required',
+            'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
         // dd($request->input('kategori'));
         $katalog = new Katalog;
         $katalog->IDKategori = $request->input('kategori');
@@ -32,7 +46,8 @@ class KatalogController extends Controller
         $katalog->Metode = $request->input('metode');
         $katalog->Keterangan = $request->input('keterangan');
         $katalog->StatusAktif = $request->input('status');
-        $katalog->FotoKatalog = $request->input('foto');
+        $katalog->FotoKatalog = time().'.'.request()->foto->getClientOriginalExtension();
+        request()->foto->move(public_path('katalog'), $katalog->FotoKatalog); 
         // dd($katalog);
         $katalog->save();
         return redirect()->route('root')->with(['success' => 'Post berhasil ditambahkan!']);

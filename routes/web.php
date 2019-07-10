@@ -28,6 +28,7 @@ Route::middleware('auth:admin')->group(function(){
   Route::get('kelola-katalog', 'KatalogController@kelolaKatalog')->name('kelola-katalog');
   Route::post('tambah-katalog','KatalogController@addKatalog')->name('tambah-katalog.post');
   Route::get('tambah-kategori', 'KatalogController@tambahKategori')->name('tambah-kategori');
+  Route::post('tambah-kategori', 'KatalogController@addKategori')->name('tambah-kategori.post');
 });
 
 Route::prefix('admin')->group(function () {

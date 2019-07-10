@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Kategori extends Model
 {
     protected $table = 'kategori';
-    protected $primaryKey = null;
+    protected $primaryKey = 'IDKategori';
     protected $guarded = [];
     public $incrementing = true;
     public $timestamps = false;

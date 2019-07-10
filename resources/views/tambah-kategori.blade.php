@@ -23,28 +23,29 @@
   <div class="box-header with-border">
     <!-- /.box-header -->
     <!-- form start -->
-    <form class="form-horizontal">
+    <form class="form-horizontal" method="POST" action="{{url('/tambah-kategori')}}" enctype="multipart/form-data">
+      {{csrf_field()}}
       <div class="box-body">
         <!-- select -->
         <div class="form-group">
           <label for="inputEmail3" class="col-sm-3 control-label">Nama Kategori</label>
           <div class="col-sm-5">
-            <input type="text" class="form-control" id="inputEmail3" placeholder="Alka">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="inputEmail3" class="col-sm-3 control-label">Foto</label>
-          <div class="col-sm-5">
-            <input type="text" class="form-control" id="inputEmail3" placeholder="Alka">
+            <input type="text" name="nama" class="form-control" id="inputEmail3" placeholder="">
           </div>
         </div>
         <!-- <div class="form-group">
-          <label for="exampleInputFile" class="col-sm-3 control-label">Foto</label>
+          <label for="inputEmail3" class="col-sm-3 control-label">Foto</label>
           <div class="col-sm-5">
-            <input type="file" id="exampleInputFile">
-            <p class="help-block">Max. 2 MB</p>
+            <input type="text" name="foto" class="form-control" id="inputEmail3" placeholder="">
           </div>
         </div> -->
+        <div class="form-group">
+          <label for="exampleInputFile" class="col-sm-3 control-label">Foto</label>
+          <div class="col-sm-5">
+            <input type="file" name="foto" id="exampleInputFile">
+            <p class="help-block">Max. 2 MB</p>
+          </div>
+        </div>
       </div>
       <!-- /.box-body -->
       <div class="box-footer">   

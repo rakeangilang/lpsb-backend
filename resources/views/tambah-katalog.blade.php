@@ -81,8 +81,8 @@
         <div class="form-group">
           <label for="exampleInputFile" class="col-sm-3 control-label">Foto</label>
           <div class="col-sm-5">
-            <input type="text" name="foto">
-            <!-- <p class="help-block">Max. 2 MB</p> -->
+            <input type="file" name="foto">
+            <p class="help-block">Max. 2 MB</p>
           </div>
         </div>
       </div>
