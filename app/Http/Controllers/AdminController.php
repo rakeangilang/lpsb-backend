@@ -2,6 +2,11 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Admin;
+use App\Pesanan;
+use App\Pelacakan;
+use App\AdministrasiPesanan;
+use App\DokumenPesanan;
+use Auth;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB; 
 
@@ -151,16 +156,16 @@ class AdminController extends Controller
         }
         // dd($hasil);
         // dd($deadline);
-        return view('details',compact('pesanan','pelanggan','sampel','tanggal','dokumen','id','hasil','deadline','id_pelanggan'));
+        return view('details',compact('pesanan','pelanggan','sampel','tanggal','dokumen','id','hasil','deadline'));
     }
 
     public function setStatus($id,$status)
     {
         try{
             $waktu_sekarang = Carbon::now('Asia/Jakarta')->toDateTimeString();
-            $id_pelanggan = $id;
-            $id_pesanan = Pesanan::select('IDPesanan')->where('IDPelanggan', $id_pelanggan)->where('IDPesanan', $request->IDPesanan)->first();
-            $id_pesanan = $id_pesanan->IDPesanan;
+            $id_pesanan = $id;
+            $id_pelanggan = Pesanan::select('IDPelanggan')->where('IDPesanan', $id)->first();
+            $id_pelanggan = $id_pelanggan->IDPelanggan;
             $set_status = $status;
 
             if($set_status!=21 && $set_status!=22 && $set_status!=51 && $set_status!=52){
@@ -169,7 +174,7 @@ class AdminController extends Controller
             
             // jika kode batal
             if($set_status == 7){
-                AdministrasiPesanan::where('IDPesanan', $id_pesanan)->update(['CatatanPembatalan'=>$request->Alasan]);
+                AdministrasiPesanan::where('IDPesanan', $id_pesanan)->update(['CatatanPembatalan'=> "tidak valid"]);
             }
             elseif($set_status == 21){
                 Pelacakan::where('IDPesanan', $id_pesanan)->update(['Pembayaran'=>3]);
@@ -178,8 +183,8 @@ class AdminController extends Controller
             elseif ($set_status == 22) {
                 Pelacakan::where('IDPesanan', $id_pesanan)->update(['KirimSampel'=>3]);
                 AdministrasiPesanan::where('IDPesanan', $id_pesanan)->update([
-                    'PenerimaSampel'=>$request->PenerimaSampel,
-                    'Jabatan'=>$request->Jabatan
+                    'PenerimaSampel'=>Auth::user()->name,
+                    'Jabatan'=>Auth::user()->jabatan
                     ]);
             }
             // jika kode sisa sampel dikirim
