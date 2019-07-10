@@ -131,7 +131,7 @@ class AdminController extends Controller
         $dokumen        = $dokumen[0];
         error_reporting(0);
         $nomor_resi = $dokumen->BuktiPengiriman;
-        $list_kurir = array("jnt", "jne", "jet", "tiki", "pos", "sicepat", "wahana", "pcp", "rpx", "sap", "dse", "first",'id_pelanggan');
+        $list_kurir = array("jnt", "jne", "jet", "tiki", "pos", "sicepat", "wahana", "pcp", "rpx", "sap", "dse", "first");
         $hasil = '';
 
         foreach($list_kurir as $kurir) {
@@ -151,7 +151,7 @@ class AdminController extends Controller
         }
         // dd($hasil);
         // dd($deadline);
-        return view('details',compact('pesanan','pelanggan','sampel','tanggal','dokumen','id','hasil','deadline'));
+        return view('details',compact('pesanan','pelanggan','sampel','tanggal','dokumen','id','hasil','deadline','id_pelanggan'));
     }
 
     public function setStatus($id,$status)
