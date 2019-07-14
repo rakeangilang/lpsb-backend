@@ -153,11 +153,11 @@
             <div class="row no-print">
                <div class="col-xs-12">
                   <a href="print-invoice" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
-                  <button type="button" href="/status/{{$id}}/2" class="btn btn-success pull-right"><i class="fa fa-check"></i> Terima
-                  </button>
-                  <button type="button" href="/status/{{$id}}/7" class="btn btn-danger pull-right" style="margin-right: 5px;">
+                  <a type="button" href="{{url('/status/'.$id.'/2')}}" class="btn btn-success pull-right"><i class="fa fa-check"></i> Terima
+                  </a>
+                  <a type="button" href="{{url('/status/'.$id.'/7')}}" class="btn btn-danger pull-right" style="margin-right: 5px;">
                   <i class="fa fa-remove"></i> Tolak
-                  </button>
+                  </a>
                </div>
             </div>
          </section>
@@ -189,12 +189,12 @@
             </div>
             <div class="row no-print">
                <div class="col-xs-12">
-                  <button type="button" href="/status/{{$id}}/21" class="btn btn-success pull-right"><i class="fa fa-check"></i>
+                  <a type="button" href="{{url('/status/'.$id.'/21')}}" class="btn btn-success pull-right"><i class="fa fa-check"></i>
                   Terima
-                  </button>
-                  <button type="button" href="/status/{{$id}}/7" class="btn btn-danger pull-right" style="margin-right: 5px;"><i class="fa fa-remove"></i>
+                  </a>
+                  <a type="button" href="{{url('/status/'.$id.'/7')}}" class="btn btn-danger pull-right" style="margin-right: 5px;"><i class="fa fa-remove"></i>
                   Tolak
-                  </button>
+                  </a>
                </div>
             </div>
          </section>
@@ -227,12 +227,12 @@
             </div>
             <div class="row no-print">
                <div class="col-xs-12">
-                  <button type="button" href="/status/{{$id}}/22" class="btn btn-success pull-right"><i class="fa fa-check"></i>
+                  <a type="button" href="{{url('/status/'.$id.'/22')}}" class="btn btn-success pull-right"><i class="fa fa-check"></i>
                   Terima
-                  </button>
-                  <button type="button" href="/status/{{$id}}/7" class="btn btn-danger pull-right" style="margin-right: 5px;"><i class="fa fa-remove"></i>
+                  </a>
+                  <a type="button" href="{{url('/status/'.$id.'/7')}}" class="btn btn-danger pull-right" style="margin-right: 5px;"><i class="fa fa-remove"></i>
                   Tolak
-                  </button>
+                  </a>
                </div>
             </div>   
             <!-- /.box-header -->
@@ -297,7 +297,7 @@
                </div>
                <!-- /.box-body -->
                <div class="box-footer">   
-                  <button type="submit" href="/status/{{$id}}/21" class="btn btn-success pull-right"><i class="fa fa-send"></i> Kirim</button>
+                  <a type="submit" href="{{url('/status/'.$id.'/52')}}" class="btn btn-success pull-right"><i class="fa fa-send"></i> Kirim</a>
                </div>
                <!-- /.box-footer -->
                </form>

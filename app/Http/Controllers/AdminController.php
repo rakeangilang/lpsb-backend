@@ -199,12 +199,16 @@ class AdminController extends Controller
             }
 
             //return response()->json(['new status'=>$set_status, 'pel'=>$pelanggan]);
-            return redirect()->route('newPemberitahuan', ['pes'=>$id_pesanan,'stat'=>$set_status, 'pel'=>$id_pelanggan]);
+            return redirect()->route('detail-order',['id'=>$id]);
+            // return redirect()->route('newPemberitahuan', ['pes'=>$id_pesanan,'stat'=>$set_status, 'pel'=>$id_pelanggan]);
         }
         catch(\Exception $e) {
             return response()->json(['success'=>false, 'message'=>$e->getMessage(),'Status'=>500], 200);
         }      
+    
+        return redirect()->route('detail-order',['id'=>$id]);
     }
+
     
     public function create()
     {
