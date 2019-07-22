@@ -20,7 +20,7 @@
   <!-- Horizontal Form -->
   <div class="box box-default">
   <div class="panel-body">
-    <form class="form-horizontal" method="POST" action="{{ route('admin.register.store') }}">
+    <form class="form-horizontal" method="POST" action="{{ route('admin.register.store') }}" enctype="multipart/form-data" >
       {{ csrf_field() }}
       <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
         <label for="name" class="col-md-4 control-label">Nama</label>

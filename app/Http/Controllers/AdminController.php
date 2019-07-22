@@ -134,6 +134,8 @@ class AdminController extends Controller
         $deadline       = Carbon::tomorrow()->toDateString();
         $dokumen        = DB::table('dokumenpesanan')->where('IDPesanan','=',$id)->get();
         $dokumen        = $dokumen[0];
+        $ttd            = Auth::user()->ttd;
+        $nama           = Auth::user()->name;
         error_reporting(0);
         $nomor_resi = $dokumen->BuktiPengiriman;
         $list_kurir = array("jnt", "jne", "jet", "tiki", "pos", "sicepat", "wahana", "pcp", "rpx", "sap", "dse", "first");
@@ -156,7 +158,7 @@ class AdminController extends Controller
         }
         // dd($hasil);
         // dd($deadline);
-        return view('details',compact('pesanan','pelanggan','sampel','tanggal','dokumen','id','hasil','deadline'));
+        return view('details',compact('pesanan','pelanggan','sampel','tanggal','dokumen','id','hasil','deadline','ttd','nama'));
     }
 
     public function setStatus($id,$status)
@@ -223,11 +225,12 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         // validate the data
+
         $this->validate($request, [
           'name'          => 'required',
           'email'         => ['required','unique:admins'],
           'jabatan'       => 'required',
-          'ttd'           => 'required',
+          'ttd'           => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
           'password'      => 'required'
         ]);
         // store in the database
@@ -235,7 +238,9 @@ class AdminController extends Controller
         $admins->name       = $request->name;
         $admins->email      = $request->email;
         $admins->jabatan    = $request->jabatan;
-        $admins->ttd        = $request->ttd;
+        $admins->ttd        = md5(time()).'.'.request()->ttd->getClientOriginalExtension();
+        request()->ttd->move(public_path('tandatangan'), $admins->ttd);
+        $admins->ttd        = 'tandatangan/'.$admins->ttd;
         $admins->password   = bcrypt($request->password);
         $admins->save();
         return redirect()->route('root');

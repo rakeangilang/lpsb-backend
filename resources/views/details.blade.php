@@ -142,9 +142,9 @@
                   
                   <table class="table">
                   <tr>
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Tanda_tangan_bapak.png" style="width:200px;height:200px;">
+                  <img src="{{asset($ttd)}}" style="width:150px;height:150px;">
                   </tr>
-                  <p>Nama admin</p>
+                  <p>{{$nama}}</p>
                   </table>
                </div>
             </div>
