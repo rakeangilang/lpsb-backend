@@ -20,7 +20,8 @@ class KatalogController extends Controller
         $kategori = new Kategori;
         $kategori->Kategori = $request->input('nama');
         $kategori->FotoKategori = time().'.'.request()->foto->getClientOriginalExtension();
-        request()->foto->move(public_path('kategori'), $kategori->FotoKategori); 
+        request()->foto->move(public_path('kategori'), $kategori->FotoKategori);
+        $kategori->FotoKategori = url('public/kategori/'.time().'.'.request()->foto->getClientOriginalExtension()); 
         $kategori->save();  
         return redirect()->route('root')->with(['success'=>'Kategori berhasil ditambahkan']);
     }
@@ -49,6 +50,7 @@ class KatalogController extends Controller
         $katalog->FotoKatalog = time().'.'.request()->foto->getClientOriginalExtension();
         request()->foto->move(public_path('katalog'), $katalog->FotoKatalog); 
         // dd($katalog);
+        $katalog->FotoKatalog = url('public/katalog/'.time().'.'.request()->foto->getClientOriginalExtension());
         $katalog->save();
         return redirect()->route('root')->with(['success' => 'Post berhasil ditambahkan!']);
     }
