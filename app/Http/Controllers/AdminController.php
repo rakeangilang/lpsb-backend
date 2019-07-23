@@ -130,8 +130,8 @@ class AdminController extends Controller
         $sampel         = DB::table('sampel')->where('IDPesanan','=',$id)->get();        
         $pesanan        = $pesanan[0];
         $pelanggan      = $pelanggan[0];
-        $tanggal        = Carbon::today()->toDateString();
-        $deadline       = Carbon::now();
+        $tanggal        = Carbon::today('Asia/Jakarta')->toDateString();
+        $deadline       = Carbon::now('Asia/Jakarta');
         $deadline       = $deadline->addDays(3)->toDateString();
         $dokumen        = DB::table('dokumenpesanan')->where('IDPesanan','=',$id)->get();
         $dokumen        = $dokumen[0];
