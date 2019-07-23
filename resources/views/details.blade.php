@@ -124,7 +124,7 @@
                   </div> -->
                <!-- /.col -->
                <div class="col-xs-6">
-                  <p class="lead">Amount Due {{$deadline}}</p>
+                  <p class="lead">Amount Due : {{$deadline}}</p>
                   <div class="table-responsive">
                      <table class="table">
                         <tr>

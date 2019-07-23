@@ -70,7 +70,7 @@
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
-              <h3>{{$total_order}}</h3>
+              <h3>{{$canceled_order}}</h3>
               <p>Pesanan Dibatalkan</p>
             </div>
             <div class="icon">

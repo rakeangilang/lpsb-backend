@@ -67,7 +67,7 @@ class AdminController extends Controller
     public function ongoingOrder()
     {
         $orders=[];
-        $id_orders = DB::table('pelacakan')->where('IDStatus','!=','1')->Where('IDStatus','!=','52')->get();
+        $id_orders = DB::table('pelacakan')->where('IDStatus','!=','1')->Where('IDStatus','!=','52')->Where('IDStatus','!=','6')->Where('IDStatus','!=','7')->get();
         $status = DB::table('statuspelacakan')->get();
         foreach ($id_orders as $id_order) {       
             $status = DB::table('statuspelacakan')->where('IDStatus','=',$id_order->IDStatus)->get();
@@ -106,7 +106,7 @@ class AdminController extends Controller
     public function totalOrder()
     {
         $orders=[];
-        $id_orders = DB::table('pelacakan')->get();
+        $id_orders = DB::table('pelacakan')->Where('IDStatus','=','6')->orWhere('IDStatus','=','7')->get();
         
         foreach ($id_orders as $id_order) {       
             $status = DB::table('statuspelacakan')->where('IDStatus','=',$id_order->IDStatus)->get();
@@ -131,7 +131,8 @@ class AdminController extends Controller
         $pesanan        = $pesanan[0];
         $pelanggan      = $pelanggan[0];
         $tanggal        = Carbon::today()->toDateString();
-        $deadline       = Carbon::tomorrow()->toDateString();
+        $deadline       = Carbon::now();
+        $deadline       = $deadline->addDays(3)->toDateString();
         $dokumen        = DB::table('dokumenpesanan')->where('IDPesanan','=',$id)->get();
         $dokumen        = $dokumen[0];
         $ttd            = Auth::user()->ttd;

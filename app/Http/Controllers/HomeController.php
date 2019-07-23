@@ -27,12 +27,14 @@ class HomeController extends Controller
         $total_order    = DB::table('pelacakan')->get();
         $incoming_order = DB::table('pelacakan')->where('IDStatus','=','1')->get();
         $complete_order = DB::table('pelacakan')->where('IDStatus','=','52')->get();
+        $canceled_order = DB::table('pelacakan')->where('IDStatus','=','7')->orWhere('IDStatus','=','6')->get();
         $total_order    = count($total_order);
         $incoming_order = count($incoming_order);
         $complete_order = count($complete_order);
-        $ongoing_order  = $total_order-($incoming_order+$complete_order);
+        $canceled_order = count($canceled_order);
+        $ongoing_order  = $total_order-($incoming_order+$complete_order+$canceled_order);
 
-        return view('index',compact('incoming_order','ongoing_order','complete_order','total_order'));
+        return view('index',compact('incoming_order','ongoing_order','complete_order','total_order','canceled_order'));
     }
 
     public function tambahKatalog() 
