@@ -40,6 +40,12 @@ class AdminController extends Controller
 
     }
 
+    public function showPelanggan()
+    {
+        $users = DB::table('pelanggan')->get();
+        return view('kelola-pelanggan',compact('users'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

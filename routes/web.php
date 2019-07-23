@@ -18,6 +18,7 @@ Auth::routes();
 Route::middleware('auth:admin')->group(function(){
   Route::get('/', 'HomeController@index')->name('root');
   Route::get('kelola-admin', 'AdminController@showAdmin')->name('kelola-admin');
+  Route::get('kelola-pelanggan', 'AdminController@showPelanggan')->name('kelola-pelanggan');
   Route::get('incoming-order', 'AdminController@incomingOrder')->name('incoming-order');
   Route::get('ongoing-order', 'AdminController@ongoingOrder')->name('ongoing-order');
   Route::get('order-complete', 'AdminController@completeOrder')->name('order-complete');
