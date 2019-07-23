@@ -201,6 +201,7 @@ class AdminController extends Controller
             }
 
             //return response()->json(['new status'=>$set_status, 'pel'=>$pelanggan]);
+            route('newPemberitahuan', ['pes'=>$id_pesanan,'stat'=>$set_status, 'pel'=>$id_pelanggan]);
             return redirect()->route('detail-order',['id'=>$id]);
             // return redirect()->route('newPemberitahuan', ['pes'=>$id_pesanan,'stat'=>$set_status, 'pel'=>$id_pelanggan]);
         }
