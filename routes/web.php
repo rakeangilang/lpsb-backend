@@ -21,7 +21,7 @@ Route::middleware('auth:admin')->group(function(){
   Route::get('incoming-order', 'AdminController@incomingOrder')->name('incoming-order');
   Route::get('ongoing-order', 'AdminController@ongoingOrder')->name('ongoing-order');
   Route::get('order-complete', 'AdminController@completeOrder')->name('order-complete');
-  Route::get('total-order', 'AdminController@totalOrder')->name('total-order');
+  Route::get('canceled-order', 'AdminController@totalOrder')->name('canceled-order');
   Route::get('detail/{id}', 'AdminController@detailOrder')->name('detail-order');
   Route::get('tambah-admin', 'AdminController@tambahAdmin')->name('tambah-admin');
   Route::get('tambah-katalog', 'KatalogController@tambahKatalog')->name('tambah-katalog');
@@ -61,8 +61,8 @@ Route::prefix('admin')->group(function () {
 //     return view('order-complete');
 // });
 
-// Route::get('/total-order', function () {
-//     return view('total-order');
+// Route::get('/canceled-order', function () {
+//     return view('canceled-order');
 // });
 
 Route::get('/details', function () {

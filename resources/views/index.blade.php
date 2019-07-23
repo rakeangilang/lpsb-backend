@@ -21,7 +21,7 @@
       <div class="row">
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-red">
+          <div class="small-box bg-aqua">
             <div class="inner">
               <h3>{{$incoming_order}}</h3>
               <p>Pesanan Masuk</p>
@@ -68,15 +68,15 @@
         </div>
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-aqua">
+          <div class="small-box bg-red">
             <div class="inner">
               <h3>{{$total_order}}</h3>
-              <p>Total Pesanan</p>
+              <p>Pesanan Dibatalkan</p>
             </div>
             <div class="icon">
               <i class="fa fa-shopping-cart"></i>
             </div>
-            <a href="total-order" class="small-box-footer">
+            <a href="canceled-order" class="small-box-footer">
               Klik disini <i class="fa fa-arrow-circle-right"></i>
             </a>
           </div>
@@ -88,12 +88,12 @@
       <div class="row">
         <div class="col-md-6">
           <!-- DONUT CHART -->
-          <div class="box box-danger">
+          <div class="box box-success">
             <div class="box-header with-border">
-              <h3 class="box-title">Tingkat Kepuasan</h3>
+              <h3 class="box-title">Total Pesanan</h3>
             </div>
             <div class="box-body">
-              <canvas id="pieChart" style="height:250px"></canvas>
+              <canvas id="pieChart" name="mycanvas" style="height:250px"></canvas>
             </div>
             <!-- /.box-body -->
           </div>
@@ -102,7 +102,7 @@
 
         <div class="col-md-6">
           <!-- BAR CHART -->
-          <div class="box box-success">
+          <div class="box box-info">
             <div class="box-header with-border">
               <h3 class="box-title">Pelanggan</h3>
             </div>

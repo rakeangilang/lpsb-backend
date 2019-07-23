@@ -54,7 +54,7 @@
                 <li><a href="/incoming-order"><i class="fa fa-circle-o"></i> Pesanan Masuk</a></li>
                 <li><a href="/ongoing-order"><i class="fa fa-circle-o"></i> Pesanan dalam Proses</a></li>
                 <li><a href="/order-complete"><i class="fa fa-circle-o"></i> Pesanan Selesai</a></li>
-                <li><a href="/total-order"><i class="fa fa-circle-o"></i> Total Pesanan</a></li>
+                <li><a href="/canceled-order"><i class="fa fa-circle-o"></i> Pesanan Dibatalkan</a></li>
               </ul>
             </li>
           </ul>

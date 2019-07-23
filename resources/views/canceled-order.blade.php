@@ -5,13 +5,13 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Total Pesanan
-        <small>Semua analisis sampel yang dilakukan</small>
+        Pesanan Dibatalkan
+        <small>Semua analisis sampel yang dibatalkan</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="/"><i class="fa fa-dashboard"></i> Beranda</a></li>
         <li class="active">Pesanan</li>
-        <li class="active">Total Pesanan</li>
+        <li class="active">Pesanan Dibatalkan</li>
       </ol>
     </section>
 
@@ -24,8 +24,7 @@
             <tr>
                 <th>No Pesanan</th>
                 <th>Nama Pemesan</th>
-                <th>Total Harga (IDR)</th>
-                <th>Status</th>
+                <th>Alasan Dibatalkan</th>
             </tr>
             </thead>
             <tbody>
@@ -33,7 +32,6 @@
             <tr>
                 <td>{{$order->NoPesanan}}</td>
                 <td>{{$order->Nama}}</td>
-                <td style="text-align: right;"><?php echo number_format($order->TotalHarga, 2, ",", "."); ?></td>
                 <td>{{$order->IDStatus}}</td>
             </tr>
             @endforeach

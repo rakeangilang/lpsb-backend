@@ -120,7 +120,7 @@ class AdminController extends Controller
             array_push($orders, $order);
         }
         // dd($order);
-        return view('total-order',compact('orders'));
+        return view('canceled-order',compact('orders'));
     }
 
     public function detailOrder($id){
