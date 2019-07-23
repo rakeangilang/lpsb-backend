@@ -128,18 +128,6 @@
                   <div class="table-responsive">
                      <table class="table">
                         <tr>
-                           <th style="width:50%">Subtotal:</th>
-                           <td>Rp100.000,00</td>
-                        </tr>
-                        <tr>
-                           <th>Pajak (10%):</th>
-                           <td>Rp10.000,00</td>
-                        </tr>
-                        <tr>
-                           <th>Pengiriman:</th>
-                           <td>Rp25.000,00</td>
-                        </tr>
-                        <tr>
                            <th>Total:</th>
                            <td>Rp<?php echo number_format($pesanan->TotalHarga, 2, ",", "."); ?></td>
                         </tr>
@@ -147,6 +135,18 @@
                   </div>
                </div>
                <!-- /.col -->
+               <div class="col-xs-6" align="right">
+                  <p class="lead">Disetujui oleh</p>
+                  
+                  <div class="table-responsive">
+                  
+                  <table class="table">
+                  <tr>
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Tanda_tangan_bapak.png" style="width:200px;height:200px;">
+                  </tr>
+                  <p>Nama admin</p>
+                  </table>
+               </div>
             </div>
             <!-- /.row -->
             <!-- this row will not appear when printing -->

@@ -55,17 +55,6 @@
           @endif
         </div>
       </div>
-      <div class="form-group{{ $errors->has('ttd') ? ' has-error' : '' }}">
-        <label for="ttd" class="col-md-4 control-label">Tanda Tangan</label>
-        <div class="col-md-4">
-          <input id="ttd" type="text" class="form-control" name="ttd" required>
-          @if ($errors->has('ttd'))
-          <span class="help-block">
-          <strong>{{ $errors->first('ttd') }}</strong>
-          </span>
-          @endif
-        </div>
-      </div>
       <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
         <label for="password" class="col-md-4 control-label">Password</label>
         <div class="col-md-4">
@@ -81,6 +70,17 @@
         <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
         <div class="col-md-4">
           <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputFile" class="col-md-4 control-label" class="form-group{{ $errors->has('ttd') ? ' has-error' : '' }}">Tanda Tangan</label>
+        <div class="col-sm-5">
+          <input id='ttd' type="file" name="ttd" required>
+          <span class="help-block"><p>Max. 2 MB</p>
+          @if ($errors->has('ttd'))
+          <strong>{{ $errors->first('ttd') }}</strong>
+          </span>
+          @endif
         </div>
       </div>
       <div class="form-group">
