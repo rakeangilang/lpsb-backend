@@ -25,6 +25,7 @@
                 <th>No Pesanan</th>
                 <th>Nama Pemesan</th>
                 <th>Alasan Dibatalkan</th>
+                <th>Detail</th>
             </tr>
             </thead>
             <tbody>
@@ -33,6 +34,11 @@
                 <td>{{$order->NoPesanan}}</td>
                 <td>{{$order->Nama}}</td>
                 <td>{{$order->IDStatus}}</td>
+                <td>
+                  <a href="detail/{{$order->NoPesanan}}" target="_blank">
+                    <span class="label label-info"><i class="fa fa-eye"></i> Lihat</span>
+                  </a>
+                </td>
             </tr>
             @endforeach
             </tbody>

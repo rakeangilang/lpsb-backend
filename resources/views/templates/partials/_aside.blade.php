@@ -5,10 +5,11 @@
           <!-- Sidebar user panel -->
           <div class="user-panel">
             <div class="pull-left image">
-              <img src="{{ asset('assets/dist/img/photo-profile.png') }}" class="img-circle" alt="User Image">
+              <img src="{{ asset('assets/dist/img/paint.png') }}" class="img-circle" alt="User Image">
             </div>
-            <div class="pull-left info">
+            <div class="pull-left info" style="vertical-align: center">
               <p>{{Auth::user()->name}}</p>
+              {{Auth::user()->jabatan}}
             </div>
           </div>
           <!-- search form -->

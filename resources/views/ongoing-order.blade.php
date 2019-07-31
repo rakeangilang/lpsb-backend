@@ -27,6 +27,7 @@
                 <th>Harga (IDR)</th>
                 <th>Tanggal Pengajuan Diterima</th>
                 <th>Status</th>
+                <th>Detail</th>
             </tr>
             </thead>
             <tbody>
@@ -37,6 +38,11 @@
                 <td style="text-align: right;"><?php echo number_format($order->TotalHarga, 2, ",", "."); ?></td>
                 <td>{{$order->DiterimaTgl}}</td>
                 <td>{{$order->IDStatus}}</td>
+                <td>
+                  <a href="detail/{{$order->NoPesanan}}" target="_blank">
+                    <span class="label label-info"><i class="fa fa-eye"></i> Lihat</span>
+                  </a>
+                </td>
             </tr>
             @endforeach
             </tbody>

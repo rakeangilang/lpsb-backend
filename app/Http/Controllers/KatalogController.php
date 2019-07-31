@@ -57,7 +57,7 @@ class KatalogController extends Controller
 
     public function tambahKatalog()
     {
-        $kats = DB::table('kategori')->select('Kategori')->get();
+        $kats = DB::table('kategori')->get();
         return view('tambah-katalog',compact('kats'));
     }
     
@@ -70,6 +70,25 @@ class KatalogController extends Controller
     public function tambahKategori()
     {
         return view('tambah-kategori');
+    }
+
+    public function editKatalog($id)
+    {
+        $katalog = Katalog::find($id);
+        return view('edit-katalog', compact('katalog'));
+    }
+
+    public function updateKatalog(Request $request, $id)
+    {
+        $katalog = Katalog::find($id);
+        $katalog->HargaIPB = $request->input('harga_ipb');
+        $katalog->HargaNONIPB = $request->input('harga_nonipb');
+        $katalog->Keterangan = $request->input('keterangan');
+        $katalog->StatusAktif = $request->input('status');
+        // dd($katalog);
+        $katalog->save();
+
+        return redirect()->route('kelola-katalog');
     }
 
     // ambil daftar katalog

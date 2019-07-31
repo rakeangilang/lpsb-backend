@@ -6,12 +6,12 @@
 <section class="content-header">
   <h1>
     Katalog
-    <small>Tambahkan Katalog</small>
+    <small>Edit Katalog</small>
   </h1>
   <ol class="breadcrumb">
     <li><a href="/"><i class="fa fa-dashboard"></i> Beranda</a></li>
     <li class="active">Katalog</li>
-    <li class="active">Tambah Katalog</li>
+    <li class="active">Edit Katalog</li>
   </ol>
 </section>
 
@@ -23,48 +23,38 @@
   <div class="box-header with-border">
     <!-- /.box-header -->
     <!-- form start -->
-    <form class="form-horizontal" method="POST" action="{{ url('/tambah-katalog')}}" enctype="multipart/form-data">
+    <form class="form-horizontal" method="POST" action="{{ url('/edit-katalog/' . $katalog->IDKatalog)}}" enctype="multipart/form-data">
       {{csrf_field()}}
       <div class="box-body">
         <!-- select -->
         <div class="form-group">
-          <label for="inputEmail3" class="col-sm-3 control-label">Kategori</label>
-          <div class="col-sm-5">
-            <select name="kategori" class="form-control">
-              @foreach($kats as $kat)
-              <option value="{{$kat->IDKategori}}">{{$kat->Kategori}}</option>
-              @endforeach
-            </select>
-          </div>
-        </div>
-        <div class="form-group">
           <label for="inputEmail3" class="col-sm-3 control-label">Jenis Analisis</label>
           <div class="col-sm-5">
-            <input type="text" name="jenis_analisis" class="form-control" id="inputEmail3" placeholder="Alka">
+            <input type="text" name="jenis_analisis" class="form-control" id="inputEmail3" value="{{$katalog->JenisAnalisis}}" disabled>
           </div>
         </div>
         <div class="form-group">
           <label for="inputEmail4" class="col-sm-3 control-label">Harga IPB (IDR)</label>
           <div class="col-sm-5">
-            <input type="number" name="harga_ipb" class="form-control" id="inputEmail3" placeholder="1000">
+            <input type="number" name="harga_ipb" class="form-control" id="inputEmail3" value="{{$katalog->HargaIPB}}">
           </div>
         </div>
         <div class="form-group">
           <label for="inputEmail4" class="col-sm-3 control-label">Harga non-IPB (IDR)</label>
           <div class="col-sm-5">
-            <input type="number" name="harga_nonipb" class="form-control" id="inputEmail3" placeholder="2000">
+            <input type="number" name="harga_nonipb" class="form-control" id="inputEmail3" value="{{$katalog->HargaNONIPB}}">
           </div>
         </div>
         <div class="form-group">
           <label for="inputEmail4" class="col-sm-3 control-label">Metode</label>
           <div class="col-sm-5">
-            <input type="text" name="metode" class="form-control" id="inputEmail3" placeholder="Prototyping">
+            <input type="text" name="metode" class="form-control" id="inputEmail3" value="{{$katalog->Metode}}" disabled>
           </div>
         </div>
         <div class="form-group">
           <label for="inputEmail4" class="col-sm-3 control-label">Keterangan</label>
           <div class="col-sm-5">
-            <input type="text" name="keterangan" class="form-control" id="inputEmail3" placeholder="Barang Bagus">
+            <input type="text" name="keterangan" class="form-control" id="inputEmail3" value="{{$katalog->Keterangan}}">
           </div>
         </div>
         <div class="form-group">
@@ -76,17 +66,10 @@
             </select>
           </div>
         </div>
-        <div class="form-group">
-          <label for="exampleInputFile" class="col-sm-3 control-label">Foto</label>
-          <div class="col-sm-5">
-            <input type="file" name="foto">
-            <p class="help-block">Max. 2 MB</p>
-          </div>
-        </div>
       </div>
       <!-- /.box-body -->
       <div class="box-footer">   
-        <button type="submit" class="btn btn-info pull-right">Tambah Katalog</button>
+        <button type="submit" class="btn btn-info pull-right">Simpan Katalog</button>
       </div>
       <!-- /.box-footer -->
     </form>

@@ -29,6 +29,8 @@
                 <th>Harga NON IPB</th>
                 <th>Metode</th>
                 <th>Keterangan</th>
+                <th>Status</th>
+                <th>Detail</th>
             </tr>
             </thead>
             <tbody>
@@ -42,6 +44,15 @@
                 <td>{{$kat->HargaNONIPB}}</td>
                 <td>{{$kat->Metode}}</td>
                 <td>{{$kat->Keterangan}}</td>
+                <td>
+                  <?php if($kat->StatusAktif) echo 'Aktif';
+                  else echo 'Tidak Aktif';?>
+                </td>
+                <td>
+                  <a href="edit-katalog/{{$kat->IDKatalog}}" target="_blank">
+                    <span class="label label-info"><i class="fa fa-eye"></i> Lihat</span>
+                  </a>
+                </td>
             </tr>
             @endforeach
             </tbody>
