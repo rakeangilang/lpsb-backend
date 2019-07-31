@@ -217,7 +217,7 @@ class AdminController extends Controller
                 if(($pelacakan->Pembayaran==3) && ($pelacakan->KirimSampel==3)){
                     $info_pelanggan = AdministrasiPesanan::select('NamaLengkap','KeteranganPesanan', 'Institusi')->where('IDPesanan', $id_pesanan)->first();
                     $pesanan = Pesanan::select('Percepatan', 'WaktuPemesanan')->where('IDPesanan', $id_pesanan)->first();
-                    // dd($pesanan);
+                    // dd($info_pelanggan->Institusi);
                     $bulan = Carbon::parse($pesanan->WaktuPemesanan)->format('m');
                     $tahun = Carbon::parse($pesanan->WaktuPemesanan)->format('y');          
                     $no_pesanan = $pesanan->NoPesanan . '/' . $bulan . '/' . $tahun;
@@ -227,8 +227,8 @@ class AdminController extends Controller
                         $sampel->setAttribute('InisialTugas', $sampel->NoSampel . '/' . $bulan . '/' . $tahun);
                         }
 
-                    $req = '{"proyek":{"NamaProyek":"'. $info_pelanggan->NamaLengkap.'","InisialProyek":"'.$no_pesanan.'","Percepatan":"'.$pesanan->Percepatan.'","DeskripsiProyek":"'.$info_pelanggan->KeteranganPesanan.'","SponsorProyek":"'.$info_pelanggan->institusi.'"},"tugas":'.$sampels.'}';
-                    // dd($req);
+                    $req = '{"proyek":{"NamaProyek":"'. $info_pelanggan->NamaLengkap.'","InisialProyek":"'.$no_pesanan.'","Percepatan":"'.$pesanan->Percepatan.'","DeskripsiProyek":"'.$info_pelanggan->KeteranganPesanan.'","SponsorProyek":"'.$info_pelanggan->Institusi.'"},"tugas":'.$sampels.'}';
+                    dd($req);
                     $ch = curl_init();
                     curl_setopt($ch, CURLOPT_URL, "http:localhost:8001/api/integrasi/proyek");
                     curl_setopt($ch, CURLOPT_POST, 1);
