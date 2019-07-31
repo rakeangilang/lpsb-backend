@@ -168,6 +168,23 @@ class AdminController extends Controller
         return view('details',compact('pesanan','pelanggan','sampel','tanggal','dokumen','id','hasil','deadline','ttd','nama'));
     }
 
+    public function printInvoice($id){
+        $pesanan        = DB::table('pesanan')->where('IDPesanan','=',$id)->select('IDPelanggan','NoPesanan','TotalHarga')->get();
+        $id_pelanggan   = $pesanan[0]->IDPelanggan;
+        $pelanggan      = DB::table('pelanggan')->where('IDPelanggan','=',$id_pelanggan)->select('Nama','Alamat','NoHP','Email')->get();
+        $sampel         = DB::table('sampel')->where('IDPesanan','=',$id)->get();        
+        $pesanan        = $pesanan[0];
+        $pelanggan      = $pelanggan[0];
+        $tanggal        = Carbon::today('Asia/Jakarta')->toDateString();
+        $deadline       = Carbon::now('Asia/Jakarta');
+        $deadline       = $deadline->addDays(3)->toDateString();
+        $ttd            = Auth::user()->ttd;
+        $nama           = Auth::user()->name;
+        // dd($hasil);
+        // dd($deadline);
+        return view('print-invoice',compact('pesanan','pelanggan','sampel','tanggal','dokumen','id','hasil','deadline','ttd','nama'));
+    }
+
     public function setStatus($id,$status)
     {
         try{

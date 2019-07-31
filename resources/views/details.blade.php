@@ -109,20 +109,6 @@
             <!-- /.row -->
             <br>
             <div class="row">
-               <!-- accepted payments column -->
-               <!-- <div class="col-xs-6">
-                  <p class="lead">Payment Methods:</p>
-                  <img src="../../dist/img/credit/visa.png" alt="Visa">
-                  <img src="../../dist/img/credit/mastercard.png" alt="Mastercard">
-                  <img src="../../dist/img/credit/american-express.png" alt="American Express">
-                  <img src="../../dist/img/credit/paypal2.png" alt="Paypal">
-                  
-                  <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-                      Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem plugg
-                      dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra.
-                  </p>
-                  </div> -->
-               <!-- /.col -->
                <div class="col-xs-6">
                   <p class="lead">Amount Due : {{$deadline}}</p>
                   <div class="table-responsive">
@@ -152,7 +138,7 @@
             <!-- this row will not appear when printing -->
             <div class="row no-print">
                <div class="col-xs-12">
-                  <a href="print-invoice" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
+                  <a href="{{url('/print-invoice/'.$id)}}" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
                   <a type="button" href="{{url('/status/'.$id.'/2')}}" class="btn btn-success pull-right"><i class="fa fa-check"></i> Terima
                   </a>
                   <a type="button" href="{{url('/status/'.$id.'/7')}}" class="btn btn-danger pull-right" style="margin-right: 5px;">

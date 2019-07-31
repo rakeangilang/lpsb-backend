@@ -33,6 +33,7 @@ Route::middleware('auth:admin')->group(function(){
   Route::get('status/{id}/{status}','AdminController@setStatus')->name('set-status');
   Route::get('edit-katalog/{id}', 'KatalogController@editKatalog')->name('edit-katalog');
   Route::post('edit-katalog/{id}', 'KatalogController@updateKatalog')->name('edit-katalog.post');
+  Route::get('print-invoice/{id}', 'AdminController@printInvoice')->name('print-invoice');
 });
 
 Route::prefix('admin')->group(function () {
@@ -72,9 +73,9 @@ Route::get('/details', function () {
     return view('details');
 });
 
-Route::get('/print-invoice', function () {
-    return view('print-invoice');
-});
+// Route::get('/print-invoice', function () {
+//     return view('print-invoice');
+// });
 
 // Route::get('/tambah-katalog', function () {
 //     return view('tambah-katalog');
