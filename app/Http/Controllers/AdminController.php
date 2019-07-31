@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Admin;
 use App\Pesanan;
+use App\Sampel;
 use App\Pelacakan;
 use App\AdministrasiPesanan;
 use App\DokumenPesanan;
@@ -212,6 +213,34 @@ class AdminController extends Controller
                     'PenerimaSampel'=>Auth::user()->name,
                     'Jabatan'=>Auth::user()->jabatan
                     ]);
+                $pelacakan = Pelacakan::where('IDPesanan', $id_pesanan)->first();
+                if(($pelacakan->Pembayaran==3) && ($pelacakan->KirimSampel==3)){
+                    $info_pelanggan = AdministrasiPesanan::select('NamaLengkap','KeteranganPesanan', 'Institusi')->where('IDPesanan', $id_pesanan)->first();
+                    $pesanan = Pesanan::select('Percepatan', 'WaktuPemesanan')->where('IDPesanan', $id_pesanan)->first();
+                    // dd($pesanan);
+                    $bulan = Carbon::parse($pesanan->WaktuPemesanan)->format('m');
+                    $tahun = Carbon::parse($pesanan->WaktuPemesanan)->format('y');          
+                    $no_pesanan = $pesanan->NoPesanan . '/' . $bulan . '/' . $tahun;
+                    $sampels = Sampel::select('NoSampel', 'JenisAnalisis')->where('IDPesanan', $id_pesanan)->get();
+                    foreach($sampels as $sampel){
+                        $sampel->setAttribute('NamaTugas', $sampel->JenisAnalisis);
+                        $sampel->setAttribute('InisialTugas', $sampel->NoSampel . '/' . $bulan . '/' . $tahun);
+                        }
+
+                    $req = '{"proyek":{"NamaProyek":"'. $info_pelanggan->NamaLengkap.'","InisialProyek":"'.$no_pesanan.'","Percepatan":"'.$pesanan->Percepatan.'","DeskripsiProyek":"'.$info_pelanggan->KeteranganPesanan.'","SponsorProyek":"'.$info_pelanggan->institusi.'"},"tugas":'.$sampels.'}';
+                    // dd($req);
+                    $ch = curl_init();
+                    curl_setopt($ch, CURLOPT_URL, "http:localhost:8001/api/integrasi/proyek");
+                    curl_setopt($ch, CURLOPT_POST, 1);
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, $req);
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+                        'Content-Type: application/json'
+                    ));
+                    $output = curl_exec($ch);
+                    dd($output);
+                }
+
             }
             // jika kode sisa sampel dikirim
             elseif($set_status == 51){
@@ -222,6 +251,12 @@ class AdminController extends Controller
             elseif($set_status == 52){
                 DokumenPesanan::where('IDPesanan', $id_pesanan)->update(['BuktiPengirimanSertifikat'=>$request->Resi]);
                 Pelacakan::where('IDPesanan', $id_pesanan)->update(['KirimSertifikat'=>2]);   
+            }
+
+            //simalub intregation
+            $pelacakan = Pelacakan::where('IDPesanan', $id_pesanan)->first();
+            if(($pelacakan->Pembayaran==3) && ($pelacakan->KirimSampel==3)){
+                dd($pelacakan);
             }
 
             //return response()->json(['new status'=>$set_status, 'pel'=>$pelanggan]);
