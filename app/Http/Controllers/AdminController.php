@@ -110,20 +110,20 @@ class AdminController extends Controller
         return view('order-complete',compact('orders'));
     }
 
-    public function totalOrder()
+    public function canceledOrder()
     {
         $orders=[];
         $id_orders = DB::table('pelacakan')->Where('IDStatus','=','6')->orWhere('IDStatus','=','7')->get();
         
         foreach ($id_orders as $id_order) {       
-            $status = DB::table('statuspelacakan')->where('IDStatus','=',$id_order->IDStatus)->get();
             $pesanan = DB::table('pesanan')->where('IDPesanan','=',$id_order->IDPesanan)->select('IDPelanggan','NoPesanan','TotalHarga')->get();
             $pelanggan = DB::table('pelanggan')->where('IDPelanggan','=',$pesanan[0]->IDPelanggan)->select('Nama')->get();
+            $catatan = DB::table('administrasipesanan')->where('IDPesanan',$id_order->IDPesanan)->get();
             $order = new \stdClass();
             $order->Nama=$pelanggan[0]->Nama;
             $order->NoPesanan=$pesanan[0]->NoPesanan;
             $order->TotalHarga=$pesanan[0]->TotalHarga;
-            $order->IDStatus= $status[0]->Status;
+            $order->IDStatus= $catatan[0]->CatatanPembatalan;
             array_push($orders, $order);
         }
         // dd($order);
@@ -186,7 +186,8 @@ class AdminController extends Controller
         return view('print-invoice',compact('pesanan','pelanggan','sampel','tanggal','dokumen','id','hasil','deadline','ttd','nama'));
     }
 
-    public function setStatus($id,$status)
+    public function setStatus(Request $request,$id,$status)
+    
     {
         try{
             $waktu_sekarang = Carbon::now('Asia/Jakarta')->toDateTimeString();
@@ -201,7 +202,7 @@ class AdminController extends Controller
             
             // jika kode batal
             if($set_status == 7){
-                AdministrasiPesanan::where('IDPesanan', $id_pesanan)->update(['CatatanPembatalan'=> "tidak valid"]);
+                AdministrasiPesanan::where('IDPesanan', $id_pesanan)->update(['CatatanPembatalan'=> $request->Alasan]);
             }
             elseif($set_status == 21){
                 Pelacakan::where('IDPesanan', $id_pesanan)->update(['Pembayaran'=>3]);
@@ -213,52 +214,45 @@ class AdminController extends Controller
                     'PenerimaSampel'=>Auth::user()->name,
                     'Jabatan'=>Auth::user()->jabatan
                     ]);
-                $pelacakan = Pelacakan::where('IDPesanan', $id_pesanan)->first();
-                if(($pelacakan->Pembayaran==3) && ($pelacakan->KirimSampel==3)){
-                    $info_pelanggan = AdministrasiPesanan::select('NamaLengkap','KeteranganPesanan', 'Institusi')->where('IDPesanan', $id_pesanan)->first();
-                    $pesanan = Pesanan::select('Percepatan', 'WaktuPemesanan')->where('IDPesanan', $id_pesanan)->first();
-                    // dd($info_pelanggan->Institusi);
-                    $bulan = Carbon::parse($pesanan->WaktuPemesanan)->format('m');
-                    $tahun = Carbon::parse($pesanan->WaktuPemesanan)->format('y');          
-                    $no_pesanan = $pesanan->NoPesanan . '/' . $bulan . '/' . $tahun;
-                    $sampels = Sampel::select('NoSampel', 'JenisAnalisis')->where('IDPesanan', $id_pesanan)->get();
-                    foreach($sampels as $sampel){
-                        $sampel->setAttribute('NamaTugas', $sampel->JenisAnalisis);
-                        $sampel->setAttribute('InisialTugas', $sampel->NoSampel . '/' . $bulan . '/' . $tahun);
-                        }
+                // $pelacakan = Pelacakan::where('IDPesanan', $id_pesanan)->first();
+                // if(($pelacakan->Pembayaran==3) && ($pelacakan->KirimSampel==3)){
+                //     $info_pelanggan = AdministrasiPesanan::select('NamaLengkap','KeteranganPesanan', 'Institusi')->where('IDPesanan', $id_pesanan)->first();
+                //     $pesanan = Pesanan::select('Percepatan', 'WaktuPemesanan')->where('IDPesanan', $id_pesanan)->first();
+                //     // dd($info_pelanggan->Institusi);
+                //     $bulan = Carbon::parse($pesanan->WaktuPemesanan)->format('m');
+                //     $tahun = Carbon::parse($pesanan->WaktuPemesanan)->format('y');          
+                //     $no_pesanan = $pesanan->NoPesanan . '/' . $bulan . '/' . $tahun;
+                //     $sampels = Sampel::select('NoSampel', 'JenisAnalisis')->where('IDPesanan', $id_pesanan)->get();
+                //     foreach($sampels as $sampel){
+                //         $sampel->setAttribute('NamaTugas', $sampel->JenisAnalisis);
+                //         $sampel->setAttribute('InisialTugas', $sampel->NoSampel . '/' . $bulan . '/' . $tahun);
+                //         }
 
-                    $req = '{"proyek":{"NamaProyek":"'. $info_pelanggan->NamaLengkap.'","InisialProyek":"'.$no_pesanan.'","Percepatan":"'.$pesanan->Percepatan.'","DeskripsiProyek":"'.$info_pelanggan->KeteranganPesanan.'","SponsorProyek":"'.$info_pelanggan->Institusi.'"},"tugas":'.$sampels.'}';
-                    dd($req);
-                    $ch = curl_init();
-                    curl_setopt($ch, CURLOPT_URL, "http:localhost:8001/api/integrasi/proyek");
-                    curl_setopt($ch, CURLOPT_POST, 1);
-                    curl_setopt($ch, CURLOPT_POSTFIELDS, $req);
-                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-                        'Content-Type: application/json'
-                    ));
-                    $output = curl_exec($ch);
-                    dd($output);
-                }
+                //     $req = '{"proyek":{"NamaProyek":"'. $info_pelanggan->NamaLengkap.'","InisialProyek":"'.$no_pesanan.'","Percepatan":"'.$pesanan->Percepatan.'","DeskripsiProyek":"'.$info_pelanggan->KeteranganPesanan.'","SponsorProyek":"'.$info_pelanggan->Institusi.'"},"tugas":'.$sampels.'}';
+                //     dd($req);       
+                //     $ch = curl_init();
+                //     curl_setopt($ch, CURLOPT_URL, "http:localhost:8001/api/integrasi/proyek");
+                //     curl_setopt($ch, CURLOPT_POST, 1);
+                //     curl_setopt($ch, CURLOPT_POSTFIELDS, $req);
+                //     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                //     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+                //         'Content-Type: application/json'
+                //     ));
+                //     $output = curl_exec($ch);
+                //     dd($output);
+                // }
 
             }
             // jika kode sisa sampel dikirim
             elseif($set_status == 51){
                 DokumenPesanan::where('IDPesanan', $id_pesanan)->update(['BuktiPengembalianSampel'=>$request->Resi]);
                 Pelacakan::where('IDPesanan', $id_pesanan)->update(['SisaSampel'=>2]);
+                DokumenPesanan::where('IDPesanan', $id_pesanan)->update(['BuktiPengirimanSertifikat'=>$request->Resi]);
+                Pelacakan::where('IDPesanan', $id_pesanan)->update(['KirimSertifikat'=>2]);
             }
             // jika kode sertifikat dikirim
-            elseif($set_status == 52){
-                DokumenPesanan::where('IDPesanan', $id_pesanan)->update(['BuktiPengirimanSertifikat'=>$request->Resi]);
-                Pelacakan::where('IDPesanan', $id_pesanan)->update(['KirimSertifikat'=>2]);   
-            }
 
             //simalub intregation
-            $pelacakan = Pelacakan::where('IDPesanan', $id_pesanan)->first();
-            if(($pelacakan->Pembayaran==3) && ($pelacakan->KirimSampel==3)){
-                dd($pelacakan);
-            }
-
             //return response()->json(['new status'=>$set_status, 'pel'=>$pelanggan]);
             route('newPemberitahuan', ['pes'=>$id_pesanan,'stat'=>$set_status, 'pel'=>$id_pelanggan]);
             return redirect()->route('detail-order',['id'=>$id]);

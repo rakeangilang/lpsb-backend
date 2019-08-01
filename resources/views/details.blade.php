@@ -139,11 +139,38 @@
             <div class="row no-print">
                <div class="col-xs-12">
                   <a href="{{url('/print-invoice/'.$id)}}" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
-                  <a type="button" href="{{url('/status/'.$id.'/2')}}" class="btn btn-success pull-right"><i class="fa fa-check"></i> Terima
-                  </a>
-                  <a type="button" href="{{url('/status/'.$id.'/7')}}" class="btn btn-danger pull-right" style="margin-right: 5px;">
+                  <a type="button" href="{{url('/status/'.$id.'/2')}}" class="btn btn-success pull-right"><i class="fa fa-check"></i> Terima</a>
+                  <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#modal-warning" style="margin-right: 5px;">
                   <i class="fa fa-remove"></i> Tolak
-                  </a>
+                  </button>
+                  <div class="modal modal-danger fade" id="modal-warning">
+                   <div class="modal-dialog">
+                     <div class="modal-content">
+                       <div class="modal-header">
+                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                           <span aria-hidden="true">&times;</span></button>
+                         <h4 class="modal-title">Tolak Order</h4>
+                       </div>
+                       <div class="modal-body">
+                         <p>Catatan Pembatalan</p>
+                         <form class="form-horizontal" method="POST" action="{{ url('/status/'.$id.'/7')}}" >
+                           {{csrf_field()}}
+                              <div class="form-group">
+                               <div class="col-md-12">
+                                 <input type="text" name="Alasan" class="form-control" id="Alasan">
+                               </div>
+                             </div>
+                       </div>
+                       <div class="modal-footer">
+                         <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                         <button type="submit" class="btn btn-outline">Simpan</button>
+                       </div>
+                       </form>
+                     </div>
+                     <!-- /.modal-content -->
+                   </div>
+                   <!-- /.modal-dialog -->
+                 </div>
                </div>
             </div>
          </section>
@@ -178,9 +205,37 @@
                   <a type="button" href="{{url('/status/'.$id.'/21')}}" class="btn btn-success pull-right"><i class="fa fa-check"></i>
                   Terima
                   </a>
-                  <a type="button" href="{{url('/status/'.$id.'/7')}}" class="btn btn-danger pull-right" style="margin-right: 5px;"><i class="fa fa-remove"></i>
-                  Tolak
-                  </a>
+                  <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#modal-warning" style="margin-right: 5px;">
+                  <i class="fa fa-remove"></i> Tolak
+                  </button>
+                  <div class="modal modal-danger fade" id="modal-warning">
+                   <div class="modal-dialog">
+                     <div class="modal-content">
+                       <div class="modal-header">
+                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                           <span aria-hidden="true">&times;</span></button>
+                         <h4 class="modal-title">Tolak Order</h4>
+                       </div>
+                       <div class="modal-body">
+                         <p>Catatan Pembatalan</p>
+                         <form class="form-horizontal" method="POST" action="{{ url('/status/'.$id.'/7')}}" >
+                           {{csrf_field()}}
+                              <div class="form-group">
+                               <div class="col-md-12">
+                                 <input type="text" name="Alasan" class="form-control" id="Alasan">
+                               </div>
+                             </div>
+                       </div>
+                       <div class="modal-footer">
+                         <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                         <button type="submit" class="btn btn-outline">Simpan</button>
+                       </div>
+                     </form>
+                     </div>
+                     <!-- /.modal-content -->
+                   </div>
+                   <!-- /.modal-dialog -->
+                 </div>
                </div>
             </div>
          </section>
@@ -216,9 +271,37 @@
                   <a type="button" href="{{url('/status/'.$id.'/22')}}" class="btn btn-success pull-right"><i class="fa fa-check"></i>
                   Terima
                   </a>
-                  <a type="button" href="{{url('/status/'.$id.'/7')}}" class="btn btn-danger pull-right" style="margin-right: 5px;"><i class="fa fa-remove"></i>
-                  Tolak
-                  </a>
+                  <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#modal-warning" style="margin-right: 5px;">
+                  <i class="fa fa-remove"></i> Tolak
+                  </button>
+                  <div class="modal modal-danger fade" id="modal-warning">
+                   <div class="modal-dialog">
+                     <div class="modal-content">
+                       <div class="modal-header">
+                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                           <span aria-hidden="true">&times;</span></button>
+                         <h4 class="modal-title">Tolak Order</h4>
+                       </div>
+                       <div class="modal-body">
+                         <p>Catatan Pembatalan</p>
+                         <form class="form-horizontal" method="POST" action="{{ url('/status/'.$id.'/7')}}" >
+                           {{csrf_field()}}
+                              <div class="form-group">
+                               <div class="col-md-12">
+                                 <input type="text" name="Alasan" class="form-control" id="Alasan">
+                               </div>
+                             </div>
+                       </div>
+                       <div class="modal-footer">
+                         <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                         <button type="submit" class="btn btn-outline">Simpan</button>
+                       </div>
+                     </form>
+                     </div>
+                     <!-- /.modal-content -->
+                   </div>
+                   <!-- /.modal-dialog -->
+                 </div>
                </div>
             </div>   
             <!-- /.box-header -->
@@ -258,32 +341,25 @@
             <!-- Horizontal Form -->
             <div class="box box-default">
                <div class="box-header with-border">
-               <h3 class="box-title">Sisa Sample </h3>
+               <h3 class="box-title">Kirim Sampel & Sertifikat </h3>
                <br>
-               <small>Jika tidak bersisa tidak perlu di isi</small>
+               <small>Masukkan Jasa Pengirim dan No Resi</small>
                </div>
                <!-- /.box-header -->
                <!-- form start -->
-               <form class="form-horizontal">
+               <form class="form-horizontal" method="POST" action="{{ url('/status/'.$id.'/51')}}">
                <div class="box-body">
+                  {{csrf_field()}}
                   <div class="form-group">
-                     <label for="inputEmail3" class="col-sm-3 control-label">Jasa Pengirim</label>
-
+                     <label for="inputEmail3" class="col-sm-3 control-label">No Resi</label>
                      <div class="col-sm-5">
-                     <input type="email" class="form-control" id="inputEmail3" placeholder="JNE / POS Indonesia / TiKi">
-                     </div>
-                  </div>
-                  <div class="form-group">
-                     <label for="inputEmail4" class="col-sm-3 control-label">No Resi</label>
-
-                     <div class="col-sm-5">
-                     <input type="email" class="form-control" id="inputEmail3" placeholder="12004004210XXXX">
+                     <input type="text" class="form-control"  name="Resi" id="Resi" placeholder="JNE 1091312312">
                      </div>
                   </div>
                </div>
                <!-- /.box-body -->
                <div class="box-footer">   
-                  <a type="submit" href="{{url('/status/'.$id.'/52')}}" class="btn btn-success pull-right"><i class="fa fa-send"></i> Kirim</a>
+                  <button type="submit" class="btn btn-success pull-right"><i class="fa fa-send"></i> Kirim</button> 
                </div>
                <!-- /.box-footer -->
                </form>

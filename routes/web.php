@@ -22,7 +22,7 @@ Route::middleware('auth:admin')->group(function(){
   Route::get('incoming-order', 'AdminController@incomingOrder')->name('incoming-order');
   Route::get('ongoing-order', 'AdminController@ongoingOrder')->name('ongoing-order');
   Route::get('order-complete', 'AdminController@completeOrder')->name('order-complete');
-  Route::get('canceled-order', 'AdminController@totalOrder')->name('canceled-order');
+  Route::get('canceled-order', 'AdminController@canceledOrder')->name('canceled-order');
   Route::get('detail/{id}', 'AdminController@detailOrder')->name('detail-order');
   Route::get('tambah-admin', 'AdminController@tambahAdmin')->name('tambah-admin');
   Route::get('tambah-katalog', 'KatalogController@tambahKatalog')->name('tambah-katalog');
@@ -30,7 +30,7 @@ Route::middleware('auth:admin')->group(function(){
   Route::post('tambah-katalog','KatalogController@addKatalog')->name('tambah-katalog.post');
   Route::get('tambah-kategori', 'KatalogController@tambahKategori')->name('tambah-kategori');
   Route::post('tambah-kategori', 'KatalogController@addKategori')->name('tambah-kategori.post');
-  Route::get('status/{id}/{status}','AdminController@setStatus')->name('set-status');
+  Route::post('status/{id}/{status}','AdminController@setStatus')->name('set-status');
   Route::get('edit-katalog/{id}', 'KatalogController@editKatalog')->name('edit-katalog');
   Route::post('edit-katalog/{id}', 'KatalogController@updateKatalog')->name('edit-katalog.post');
   Route::get('print-invoice/{id}', 'AdminController@printInvoice')->name('print-invoice');
