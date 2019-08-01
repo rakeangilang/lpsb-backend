@@ -196,9 +196,8 @@ class AdminController extends Controller
             $id_pelanggan = $id_pelanggan->IDPelanggan;
             $set_status = $status;
 
-            if($set_status!=21 && $set_status!=22 && $set_status!=51 && $set_status!=52){
-                Pelacakan::where('IDPesanan', $id_pesanan)->update(['IDStatus' => $set_status, 'UpdateTerakhir' => $waktu_sekarang]);
-            }
+            
+            Pelacakan::where('IDPesanan', $id_pesanan)->update(['IDStatus' => $set_status, 'UpdateTerakhir' => $waktu_sekarang]);
             
             // jika kode batal
             if($set_status == 7){
@@ -244,7 +243,7 @@ class AdminController extends Controller
 
             }
             // jika kode sisa sampel dikirim
-            elseif($set_status == 51){
+            elseif($set_status == 52){
                 DokumenPesanan::where('IDPesanan', $id_pesanan)->update(['BuktiPengembalianSampel'=>$request->Resi]);
                 Pelacakan::where('IDPesanan', $id_pesanan)->update(['SisaSampel'=>2]);
                 DokumenPesanan::where('IDPesanan', $id_pesanan)->update(['BuktiPengirimanSertifikat'=>$request->Resi]);

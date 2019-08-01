@@ -347,7 +347,7 @@
                </div>
                <!-- /.box-header -->
                <!-- form start -->
-               <form class="form-horizontal" method="POST" action="{{ url('/status/'.$id.'/51')}}">
+               <form class="form-horizontal" method="POST" action="{{ url('/status/'.$id.'/52')}}">
                <div class="box-body">
                   {{csrf_field()}}
                   <div class="form-group">
