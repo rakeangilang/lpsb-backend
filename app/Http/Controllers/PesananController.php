@@ -401,6 +401,7 @@ class PesananController extends Controller
             $waktu_pesanan_dibuat = $waktu_pesanan_dibuat->toDateTimeString();
             $waktu_status_utama = Pelacakan::select('UpdateTerakhir')->where('IDPesanan', $id_pesanan)->first()->UpdateTerakhir;
             if($waktu_status_utama!=null) $waktu_status_utama = $waktu_status_utama->toDateTimeString();
+            $waktu_ulasan = Pelacakan::select('WaktuUlasan')->where('IDPesanan', $id_pesanan)->first()->WaktuUlasan;
             $status_pembayaran = Pelacakan::select('Pembayaran')->where('IDPesanan', $id_pesanan)->first()->Pembayaran;
             $status_kirim_sampel = Pelacakan::select('KirimSampel')->where('IDPesanan', $id_pesanan)->first()->KirimSampel;
             $status_sisa_sampel = Pelacakan::select('SisaSampel')->where('IDPesanan', $id_pesanan)->first()->SisaSampel;
@@ -542,6 +543,7 @@ class PesananController extends Controller
                 'WaktuUlasan'=>$waktu_ulasan, 'WaktuPesananDibuat'=>$waktu_pesanan_dibuat, 'StatusPembayaran'=>$status_pembayaran,
                 'WaktuPembayaran'=>$waktu_pembayaran, 'StatusKirimSampel'=>$status_kirim_sampel,
                 'WaktuKirimSampel'=>$waktu_kirim_sampel , 'WaktuTerimaSisa'=>$waktu_terima_sisa,
+                'WaktuUlasan'=>$waktu_ulasan,
                 'WaktuTerimaSertifikat'=>$waktu_terima_sertif, 'StatusSisaSampel'=>$status_sisa_sampel,
                 'ResiPengirimanSisa'=>$resi_sisa_sampel, 'ResiPengirimanSertif'=>$resi_sertif,
                 'StatusKirimSertifikat'=>$status_kirim_sertifikat);

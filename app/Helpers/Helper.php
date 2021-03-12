@@ -60,9 +60,9 @@ class Helper
         		'NoHP' => $data_user['NoHP'],
         		'Email' => $data_user['Email'],
         		'NoNPWP' => $data_user['NoNPWP'],
-        		'NamaRekening' => $data_rek['NamaRekening'],
-        		'NamaBank' => $data_rek['NamaBank'],
-        		'NoRekening' => $data_rek['NoRekening'],
+        		// 'NamaRekening' => $data_rek['NamaRekening'], info rek tidak digunakan
+        		// 'NamaBank' => $data_rek['NamaBank'],
+        		// 'NoRekening' => $data_rek['NoRekening'],
         		'KeteranganPesanan' => $keterangan
         		]);
         	//{"NamaLengkap": "Gilang", "Institusi": "IPB", "Alamat": "bogor", "NoHP": "999", "Email": "ganteng@banget.com", "NoNPWP": "9182938", "NamaRekening": "h3h3", "NamaBank": "jabar", "NoRekening": "231992"}

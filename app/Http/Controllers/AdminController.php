@@ -7,6 +7,7 @@ use App\Sampel;
 use App\Pelacakan;
 use App\AdministrasiPesanan;
 use App\DokumenPesanan;
+use App\Pemberitahuan;
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB; 
@@ -196,8 +197,14 @@ class AdminController extends Controller
             $id_pelanggan = $id_pelanggan->IDPelanggan;
             $set_status = $status;
 
+            $pemberitahuan = Pemberitahuan::create([
+            'IDPesanan'=>$id_pesanan,
+            'IDStatus'=>$set_status,
+            'WaktuPemberitahuan'=>$waktu_sekarang,
+            'IDPelanggan'=>$id_pelanggan
+            ]);
             
-            Pelacakan::where('IDPesanan', $id_pesanan)->update(['IDStatus' => $set_status, 'UpdateTerakhir' => $waktu_sekarang]);
+            // Pelacakan::where('IDPesanan', $id_pesanan)->update(['IDStatus' => $set_status, 'UpdateTerakhir' => $waktu_sekarang]);
             
             // jika kode batal
             if($set_status == 7){
@@ -253,11 +260,24 @@ class AdminController extends Controller
 
             //simalub intregation
             //return response()->json(['new status'=>$set_status, 'pel'=>$pelanggan]);
+            
+            // jika status 21/22/51/52, simpan status utamanya (2 atau 5)
+            if($set_status==21 || $set_status==22) {
+                $set_status=2;
+            } elseif($set_status==51 || $set_status==52){
+                $set_status=5;
+            }
+
+            Pelacakan::where('IDPesanan', $id_pesanan)->update(['IDStatus' => $set_status, 'UpdateTerakhir' => $waktu_sekarang]);
+
+            
+
             route('newPemberitahuan', ['pes'=>$id_pesanan,'stat'=>$set_status, 'pel'=>$id_pelanggan]);
             return redirect()->route('detail-order',['id'=>$id]);
             // return redirect()->route('newPemberitahuan', ['pes'=>$id_pesanan,'stat'=>$set_status, 'pel'=>$id_pelanggan]);
         }
         catch(\Exception $e) {
+            dd($e);
             return response()->json(['success'=>false, 'message'=>$e->getMessage(),'Status'=>500], 200);
         }      
     

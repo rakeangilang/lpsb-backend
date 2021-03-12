@@ -67,10 +67,23 @@ class KatalogController extends Controller
         return view('kelola-katalog',compact('katalog'));
     }
 
+    public function kelolaKategori()
+    {
+        $kategori = DB::table('kategori')->get();
+        return view('kelola-kategori',compact('kategori'));
+    }
+
     public function tambahKategori()
     {
         return view('tambah-kategori');
     }
+
+    // public function kelolaKategori()
+    // {
+    //     $katalog = DB::table('kategori')->get();
+    //     return view('kelola-kategori',compact('kategori'));
+    // }
+
 
     public function editKatalog($id)
     {
@@ -91,6 +104,25 @@ class KatalogController extends Controller
         return redirect()->route('kelola-katalog');
     }
 
+    public function deleteKatalog(Request $request, $id)
+    {
+        $katalog = Katalog::find($id);
+
+        // dd($katalog);
+        $katalog->delete();
+
+        return redirect()->route('kelola-katalog');
+    }
+
+    public function deleteKategori(Request $request, $id)
+    {
+        $kategori = Kategori::find($id);
+
+        // dd($kategori);
+        $kategori->delete();
+
+        return redirect()->route('kelola-kategori');
+    }
     // ambil daftar katalog
     public function getAllKatalog()
     {
@@ -116,8 +148,8 @@ class KatalogController extends Controller
                         ->where('StatusAktif', 1)->get();
 
             foreach ($katalogs as $katalog) {
-                $nama_kategori = Kategori::select('Kategori')->where('IDKategori', $katalog->IDKategori)->first()->Kategori;
-                $katalog->setAttribute('Kategori', $nama_kategori);
+                // $nama_kategori = Kategori::select('Kategori')->where('IDKategori', $katalog->IDKategori)->first()->Kategori;
+                $katalog->setAttribute('Kategori', $katalog->Kategori);
             }
 
         return response()->json([

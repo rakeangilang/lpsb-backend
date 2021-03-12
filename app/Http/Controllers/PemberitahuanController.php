@@ -68,7 +68,7 @@ class PemberitahuanController extends Controller
         try{
             // if status cocok, buat pemberitahuan, kalo nggak gausah
         $waktu = Carbon::now('Asia/Jakarta')->toDateTimeString();
-
+        dd($waktu);
         $pemberitahuan = Pemberitahuan::create([
             'IDPesanan'=>$pes,
             'IDStatus'=>$stat,

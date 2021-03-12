@@ -224,17 +224,18 @@ class DocumentController extends Controller
 
             if($request->hasFile('img')) {
                 $foto = $request->file('img');
-                $nama_foto = "ini_gambar." . $foto->getClientOriginalExtension();
-                $img_path = $foto->storeAs('photos1', $nama_foto);
-                $bayar = "Bukti pembayaran";
+                // Format nama:{IDPesanan}_{IDPelanggan}
+                $nama_foto = $id_pesanan . "_" . $id_pelanggan . "." . $foto->getClientOriginalExtension();
+                $img_path = $foto->storeAs('BuktiPembayaran', $nama_foto);
+                $bayar = $img_path;
 //            $img_path = $request->file('photo')->storeAs('photos', "ini_gambar");
 
-            //    DokumenPesanan::where('IDPesanan', $id_pesanan)->update(['BuktiPembayaran'=>$bayar]);
-            //    $waktu_sekarang = Carbon::now('Asia/Jakarta')->toDateTimeString();
-            //    Pelacakan::where('IDPesanan', $id_pesanan)->update([
-            //      'Pembayaran'=>2,
-            //      'WaktuPembayaran'=>$waktu_sekarang
-            //    ]);
+               DokumenPesanan::where('IDPesanan', $id_pesanan)->update(['BuktiPembayaran'=>$bayar]);
+               $waktu_sekarang = Carbon::now('Asia/Jakarta')->toDateTimeString();
+               Pelacakan::where('IDPesanan', $id_pesanan)->update([
+                 'Pembayaran'=>2,
+                 'WaktuPembayaran'=>$waktu_sekarang
+               ]);
 
             return response()->json(['IDPelanggan'=>$id_pelanggan, 'DebugRequest'=>$all_req, 'Status'=>200], 200);
             }

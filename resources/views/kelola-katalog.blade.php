@@ -30,7 +30,7 @@
                 <th>Metode</th>
                 <th>Keterangan</th>
                 <th>Status</th>
-                <th>Detail</th>
+                <th>Opsi</th>
             </tr>
             </thead>
             <tbody>
@@ -51,6 +51,9 @@
                 <td>
                   <a href="edit-katalog/{{$kat->IDKatalog}}" target="_blank">
                     <span class="label label-info"><i class="fa fa-eye"></i> Lihat</span>
+                  </a>
+                  <a href="delete-katalog/{{$kat->IDKatalog}}" target="_blank">
+                    <span class="label label-danger"><i class="fa fa-trash"></i> Hapus</span>
                   </a>
                 </td>
             </tr>

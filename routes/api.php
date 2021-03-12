@@ -33,7 +33,7 @@ Route::get('/getKatalog/{id_katalog}', 'KatalogController@getKatalogByID')->midd
 Route::post('/tambahItemKeranjang', 'KeranjangController@tambahItem')->middleware('auth:api');
 Route::get('/getKeranjang', 'KeranjangController@getKeranjang')->middleware('auth:api')->name('getKeranjang');
 Route::post('/hapusItem', 'KeranjangController@hapusItem')->middleware('auth:api');
-Route::post('/pesanItem', 'KeranjangController@pesanItem')->middleware('auth:api');
+Route::post('/pesanItem', 'KeranjangController@pesanItem')->middleware(['auth:api', 'log.route']);
 
 // Pelanggan
 //Route::get('/getInfoRekening', 'PelangganController@getInfoRekening')->middleware('auth:api');
@@ -68,4 +68,4 @@ Route::get('/getSertifikat/{pes}', 'DocumentController@getSertifikat')->middlewa
 Route::get('/kategoriImages/{pth}', 'DocumentController@getKategoriImages');
 Route::get('/katalogImages/{pth}', 'DocumentController@getKatalogImages');
 //Route::post('/hatata', 'DocumentController@hatata');
-Route::post('/uploadBuktiPembayaran/{pes}', 'DocumentController@uploadBuktiPembayaran')->middleware('auth:api');
+Route::post('/uploadBuktiPembayaran/{pes}', 'DocumentController@uploadBuktiPembayaran')->middleware(['auth:api','log.route']);

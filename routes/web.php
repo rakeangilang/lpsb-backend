@@ -27,10 +27,14 @@ Route::middleware('auth:admin')->group(function(){
   Route::get('tambah-admin', 'AdminController@tambahAdmin')->name('tambah-admin');
   Route::get('tambah-katalog', 'KatalogController@tambahKatalog')->name('tambah-katalog');
   Route::get('kelola-katalog', 'KatalogController@kelolaKatalog')->name('kelola-katalog');
+  Route::get('kelola-kategori', 'KatalogController@kelolaKategori')->name('kelola-kategori');
+  Route::get('delete-kategori/{id}', 'KatalogController@deleteKategori')->name('delete-kategori');
+  Route::get('delete-katalog/{id}', 'KatalogController@deleteKatalog')->name('delete-katalog');
   Route::post('tambah-katalog','KatalogController@addKatalog')->name('tambah-katalog.post');
   Route::get('tambah-kategori', 'KatalogController@tambahKategori')->name('tambah-kategori');
   Route::post('tambah-kategori', 'KatalogController@addKategori')->name('tambah-kategori.post');
-  Route::post('status/{id}/{status}','AdminController@setStatus')->name('set-status');
+  Route::post('status/{id}/{status}','AdminController@setStatus')->name('set-status-post');
+  Route::get('status/{id}/{status}','AdminController@setStatus')->name('set-status-get');
   Route::get('edit-katalog/{id}', 'KatalogController@editKatalog')->name('edit-katalog');
   Route::post('edit-katalog/{id}', 'KatalogController@updateKatalog')->name('edit-katalog.post');
   Route::get('print-invoice/{id}', 'AdminController@printInvoice')->name('print-invoice');
